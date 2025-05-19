@@ -1,218 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <title>Ijeoma | Generative AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      /* Dark‑theme palette */
+      /* Palette */
       --accent: #1B5E20;          /* primary green */
-      --accent-dark: #2E7D32;     /* brighter green for headings */
-      --bg: #121212;              /* main background */
-      --sidebar-bg: #1E1E1E;      /* sidebar background */
-      --text: #E0E0E0;            /* light text */
-      --muted: #A9B0B8;           /* muted grey */
-      --border: #333;             /* subtle borders */
-      --card-bg: #1F1F1F;         /* cards / panels */
-      --link: #66BB6A;            /* link / hover accent */
-
-      --heading-font: "Georgia", "Times New Roman", serif;
-      --body-font: "Segoe UI", Arial, Helvetica, sans-serif;
+      --accent-dark: #0f3b15;     /* darker green */
+      --bg: #ffffff;              /* page background */
+      --text: #222;               /* main text */
+      --muted: #666;              /* muted text */
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
     body {
-      display: grid;
-      grid-template-columns: 260px 1fr;
-      min-height: 100vh;
-      font-family: var(--body-font);
+      font-family: "Inter", sans-serif;
       background: var(--bg);
       color: var(--text);
+      line-height: 1.6;
     }
 
-    /* ---------- Sidebar ---------- */
-    #sidebar {
-      background: var(--sidebar-bg);
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      border-right: 1px solid var(--border);
-    }
-    #avatar {
-      width: 110px; height: 110px;
-      border-radius: 50%; object-fit: cover;
-      border: 3px solid var(--accent);
-      margin-bottom: 1.2rem;
-    }
-    #sidebar h1 {
-      font-family: var(--heading-font);
-      font-size: 1.6rem; margin-bottom: .25rem; text-align: center;
+    h1, h2, h3 {
+      font-family: "Georgia", "Times New Roman", serif; /* serif headings */
       color: var(--accent-dark);
-    }
-    #sidebar .tagline {
-      font-size: .9rem; color: var(--muted); text-align: center; margin-bottom: 1.5rem;
-    }
-    #sidebar nav { width: 100%; margin-bottom: 2rem; }
-    #sidebar nav a {
-      display: block; padding: .5rem 0;
-      text-decoration: none; font-weight: 600; color: var(--link);
-    }
-    #sidebar nav a:hover { opacity: .8; }
-
-    /* ---------- Main ---------- */
-    main { padding: 2rem 3rem; max-width: 100%; }
-    section { margin-bottom: 3rem; }
-    section h2 {
-      font-family: var(--heading-font);
-      font-size: 1.75rem; color: var(--accent-dark);
-      margin-bottom: 1rem;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block; padding-bottom: .25rem;
+      margin-bottom: 0.5em;
     }
 
-    .card {
-      border: 1px solid var(--border);
-      padding: 1.25rem 1.5rem;
-      border-radius: 8px;
-      background: var(--card-bg);
-      box-shadow: 0 1px 3px rgba(0, 0, 0, .6);
+    header {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1rem;
     }
 
-    /* ---------- Submissions grid ---------- */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+    header p {
+      opacity: 0.9;
     }
-    .article-card {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--card-bg);
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.8);
-      display: flex; flex-direction: column; height: 100%;
-    }
-    .article-card img { width: 100%; height: 160px; object-fit: cover; }
-    .article-card .info {
-      padding: 1rem 1.25rem;
-      flex: 1;
-      display: flex; flex-direction: column;
-    }
-    .article-card h3 {
-      font-family: var(--heading-font);
-      font-size: 1.15rem; margin-bottom: .5rem; line-height: 1.3;
-      color: var(--text);
-    }
-    .article-card p { font-size: .9rem; color: var(--muted); margin-bottom: .4rem; flex: 1; }
-    .article-card a.read-more {
-      align-self: flex-start;
-      margin-top: .75rem;
-      color: var(--link); font-weight: 600; text-decoration: none;
-    }
-    .article-card a.read-more:hover { opacity: .8; }
 
-    ul, ol { margin-left: 1.25rem; }
-    li { margin-bottom: .4rem; }
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      position: relative;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #fff;
+      transition: width 0.3s ease;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    section {
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    #about {
+      background: #F8F9FA;
+    }
+    #about ul {
+      margin-top: 1rem;
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    #course ul {
+      margin-top: 1rem;
+      list-style: square;
+      padding-left: 1.5rem;
+    }
+
+    #submissions ul {
+      list-style: none;
+      margin-top: 1rem;
+      padding-left: 0;
+    }
+    #submissions li {
+      margin-bottom: 0.6rem;
+    }
+    #submissions a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease;
+    }
+    #submissions a:hover {
+      border-color: var(--accent-dark);
+    }
 
     footer {
-      grid-column: 1 / span 2;
+      background: #f1f1f1;
       text-align: center;
-      padding: 1rem 0;
-      border-top: 1px solid var(--border);
-      font-size: .85rem;
-      background: var(--sidebar-bg);
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: var(--muted);
     }
 
-    /* ---------- Responsive ---------- */
-    @media (max-width: 768px) {
-      body { grid-template-columns: 1fr; }
-      #sidebar {
-        flex-direction: row;
-        justify-content: space-between;
-        border-right: none; border-bottom: 1px solid var(--border);
-        padding: 1rem;
-      }
-      #avatar { width: 60px; height: 60px; margin-bottom: 0; margin-right: 1rem; }
-      #sidebar nav { display: flex; gap: 1.5rem; margin-bottom: 0; }
-      main { padding: 1.5rem; }
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+      body { background: #121212; color: #e0e0e0; }
+      header { background: var(--accent-dark); }
+      #about { background: #1e1e1e; }
+      nav a { color: #e0e0e0; }
+      #submissions a { color: #a5d6a7; }
+      footer { background: #1e1e1e; color: #999; }
     }
   </style>
 </head>
 <body>
-  <!-- ---------- Sidebar ---------- -->
-  <aside id="sidebar">
-    <img id="avatar" src="https://api.dicebear.com/7.x/adventurer/png?seed=Ijeoma&skinColor=brown&accessoriesType=glasses01&hairColor=black&hairType=longStraight" alt="Avatar of Ijeoma: stylized Black woman wearing glasses" />
-    <div>
-      <h1>Ijeoma</h1>
-      <p class="tagline">Data Analyst &middot; Generative AI Enthusiast</p>
-      <nav>
-        <a href="#about-me">About Me</a>
-        <a href="#about-course">About the Course</a>
-        <a href="#submissions">Weekly Submissions</a>
-      </nav>
-    </div>
-  </aside>
+  <header>
+    <h1>Ijeoma Iwuora</h1>
+    <p>Senior Business Advisor | Data &amp; AI Enthusiast</p>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#course">About the Course</a>
+      <a href="#submissions">Weekly Submissions</a>
+    </nav>
+  </header>
 
-  <!-- ---------- Main ---------- -->
-  <main>
-    <!-- ===== About Me ===== -->
-    <section id="about-me">
-      <h2>About Me</h2>
-      <div class="card">
-        <p>I am a data analyst with 7+ years of experience turning data into actionable insights for product, marketing, and executive teams.</p>
-        <p>Recent achievements include building end‑to‑end reporting infrastructure in Tableau &amp; SQL, designing A/B experiments that increased conversion by 19&nbsp;bps, and leading a small analytics team. I hold a B.S. in Mathematics &amp; Economics.</p>
-        <p><strong>Core skills:</strong> SQL, Python (Pandas &amp; scikit‑learn), Tableau, Excel/Google Sheets, A/B Testing, Google Analytics, Leadership.</p>
-        <p>Beyond querying databases, I explore emerging AI tools to streamline everyday workflows.</p>
-        <p class="small">Find me on <a href="#" target="_blank" rel="noopener">LinkedIn</a>.</p>
-      </div>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m <strong>Ijeoma</strong>, a Senior Business Advisor at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester and certifications in Advanced Epidemiological Data Science, Biostatistics, and Prosci Change Management, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
+    <ul>
+      <li><strong>Core Skills:</strong> SQL • Python • R • Data Visualization • Forecasting • Generative AI</li>
+      <li><strong>What I'm doing now:</strong> Automating data pipelines, building AI‑powered dashboards, and exploring LLM agents for rapid literature reviews.</li>
+      <li><strong>Outside work:</strong> Soccer mom to four energetic kids and an avid lover of coastal walks.</li>
+    </ul>
+  </section>
 
-    <!-- ===== About Course ===== -->
-    <section id="about-course">
-      <h2>About the Course</h2>
-      <div class="card">
-        <p><em>Generative AI for Work &amp; Research</em> is a hands‑on program where we learn to harness AI to automate routine tasks, organize knowledge, and communicate insights with impact:</p>
-        <ul>
-          <li>Automate time‑consuming document, spreadsheet, and data tasks.</li>
-          <li>Use AI tools for knowledge organization and literature reviews.</li>
-          <li>Develop custom chatbots to support projects or teams.</li>
-          <li>Create professional and scientific visuals &amp; presentations with AI.</li>
-          <li>Apply learnings in a capstone project.</li>
-          <li>Receive real‑time support in live workshops, help sessions, and forums.</li>
-        </ul>
-        <p>I’m eager to embed these capabilities into my analytics toolkit—accelerating data prep, content creation, and insight generation for stakeholders.</p>
-      </div>
-    </section>
+  <section id="course">
+    <h2>About the Course</h2>
+    <p><em>Generative AI for Work &amp; Research</em> is an eight‑week intensive where participants build practical AI solutions that supercharge productivity. Over the next two months, I will:</p>
+    <ul>
+      <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
+      <li>Use AI tools for knowledge organization and literature reviews</li>
+      <li>Develop custom chatbots to support projects and teams</li>
+      <li>Create professional visuals and presentations with AI</li>
+      <li>Apply these skills in a hands‑on capstone project</li>
+      <li>Receive real‑time support in live workshops, help sessions &amp; online forums</li>
+    </ul>
+  </section>
 
-    <!-- ===== Weekly Submissions ===== -->
-    <section id="submissions">
-      <h2>My Weekly Submissions</h2>
-      <div class="grid">
-        <!-- Week 1 -->
-        <article class="article-card">
-          <img src="https://source.unsplash.com/collection/190727/640x360" alt="Week 1 submission thumbnail" />
-          <div class="info">
-            <h3>Week 1: Automating Data Tasks with Python</h3>
-            <p>A walk‑through of my script that cleans, transforms, and summarizes CSV exports in seconds.</p>
-            <a href="#" class="read-more">Read more</a>
-          </div>
-        </article>
+  <section id="submissions">
+    <h2>Weekly Submissions</h2>
+    <p>Links will be added here as the course progresses. Stay tuned!</p>
+    <ul>
+      <li><a href="#" aria-disabled="true">Week 1 – Automating Data Cleaning (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 2 – Literature Review Bot (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 3 – AI‑Generated Visualizations (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 4 – Custom LLM Chatbot (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&A (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
+    </ul>
+  </section>
 
-        <!-- Week 2 -->
-        <article class="article-card">
-          <img src="https://source.unsplash.com/collection/893715/640x360" alt="Week 2 submission thumbnail" />
-          <div class="info">
-            <h3>Week 2: Literature Review Bot</h3>
-            <p>How I built a custom chatbot to surface key findings from 50+ research papers on hospital demand.</p>
-            <a href="#" class="read-more">Read more</a>
-          </div>
-        </article>
-      </div>
-    </section>
-  </main>
+  <footer>
+    © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
+  </footer>
 
-  <footer>&copy; 2025 Ijeoma. All rights reserved.</footer>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
