@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -15,8 +15,7 @@
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
     h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--accent-dark);margin-bottom:.5em;}
-   header h1 {
-  color: #fff;      /* pure white */}
+    header h1 {color:#fff;}
     /* Avatar */
     .avatar{width:160px;height:160px;object-fit:cover;border:4px solid #fff;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:0 auto 1rem auto;display:block;}
 
@@ -35,7 +34,7 @@
     #course ul{margin-top:1rem;list-style:square;padding-left:1.5rem;}
 
     #submissions ul{list-style:none;margin-top:1rem;padding-left:0;}
-    #submissions li{margin-bottom:.6rem;}
+    #submissions li{margin-bottom:.8rem;}
     #submissions a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease;}
     #submissions a:hover{border-color:var(--accent-dark);}
 
@@ -84,10 +83,12 @@
     <p>Links will be added here as the course progresses. Stay tuned!</p>
     <ul>
       <li><a href="#" aria-disabled="true">Week 1 – Automating Data Cleaning (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 2 – Literature Review Bot (coming soon)</a></li>
+      <li>
+        <a href="https://github.com/AijayI/graph_ai_portfolio/blob/main/analysis_report.html" target="_blank" rel="noopener">Week 2 – Automated Data Analysis: Health Spending vs Life Expectancy Report</a>
+      </li>
       <li><a href="#" aria-disabled="true">Week 3 – AI‑Generated Visualizations (coming soon)</a></li>
       <li><a href="#" aria-disabled="true">Week 4 – Custom LLM Chatbot (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&A (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&amp;A (coming soon)</a></li>
       <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
       <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
       <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
@@ -98,8 +99,6 @@
     © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
-
-   
