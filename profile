@@ -20,8 +20,10 @@
       --body-font: "Segoe UI", Arial, Helvetica, sans-serif;
     }
 
+    /* Reset */
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 
+    /* Layout */
     body{
       display:grid;
       grid-template-columns:260px 1fr;
@@ -31,6 +33,7 @@
       color:var(--text);
     }
 
+    /* Sidebar */
     #sidebar{
       background:var(--sidebar-bg);
       padding:2rem 1.5rem;
@@ -53,6 +56,7 @@
     #sidebar nav a{display:block;padding:.5rem 0;text-decoration:none;font-weight:600;color:var(--link);}    
     #sidebar nav a:hover{opacity:.8;}
 
+    /* Main content */
     main{padding:2rem 3rem;max-width:100%;}
     section{margin-bottom:3rem;}
     section h2{
@@ -61,10 +65,18 @@
       display:inline-block;padding-bottom:.25rem;
     }
 
+    /* Cards */
     .card{border:1px solid var(--border);padding:1.25rem 1.5rem;border-radius:8px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.06);}
 
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;}
-    .article-card{border:1px solid var(--border);border-radius:8px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;height:100%;}
+    /* Submissions grid */
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+      gap:1.5rem;
+    }
+    .article-card{
+      border:1px solid var(--border);border-radius:8px;background:#fff;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.08);display:flex;flex-direction:column;height:100%;
+    }
     .article-card img{width:100%;height:160px;object-fit:cover;}
     .article-card .info{padding:1rem 1.25rem;flex:1;display:flex;flex-direction:column;}
     .article-card h3{font-family:var(--heading-font);font-size:1.15rem;margin-bottom:.5rem;line-height:1.3;}
@@ -72,15 +84,27 @@
     .article-card a.read-more{align-self:flex-start;margin-top:.75rem;color:var(--link);font-weight:600;text-decoration:none;}
     .article-card a.read-more:hover{opacity:.8;}
 
-    ul,ol{margin-left:1.25rem;}li{margin-bottom:.4rem;}
+    /* Lists */
+    ul,ol{margin-left:1.25rem;}
+    li{margin-bottom:.4rem;}
 
+    /* Footer */
     footer{grid-column:1/span 2;text-align:center;padding:1rem 0;border-top:1px solid var(--border);font-size:.85rem;background:var(--sidebar-bg);}
 
-    @media(max-width:768px){body{grid-template-columns:1fr;}#sidebar{flex-direction:row;justify-content:space-between;border-right:none;border-bottom:1px solid var(--border);padding:1rem;}#avatar{width:60px;height:60px;margin-bottom:0;margin-right:1rem;}#sidebar nav{display:flex;gap:1.5rem;margin-bottom:0;}main{padding:1.5rem;}}
+    /* Responsive */
+    @media(max-width:768px){
+      body{grid-template-columns:1fr;}
+      #sidebar{flex-direction:row;justify-content:space-between;border-right:none;border-bottom:1px solid var(--border);padding:1rem;}
+      #avatar{width:60px;height:60px;margin-bottom:0;margin-right:1rem;}
+      #sidebar nav{display:flex;gap:1.5rem;margin-bottom:0;}
+      main{padding:1.5rem;}
+    }
   </style>
 </head>
 <body>
+  <!-- Sidebar -->
   <aside id="sidebar">
+    <!-- Static illustrated avatar generated via DiceBear (PNG) to avoid 404 issues -->
     <img id="avatar" src="https://api.dicebear.com/7.x/adventurer/png?seed=Ijeoma&skinColor=brown&accessoriesType=glasses01&hairColor=black&hairType=longStraight" alt="Avatar of Ijeoma: stylized Black woman wearing glasses" />
     <div>
       <h1>Ijeoma</h1>
@@ -93,6 +117,7 @@
     </div>
   </aside>
 
+  <!-- Main Content -->
   <main>
     <section id="about-me">
       <h2>About Me</h2>
@@ -136,4 +161,6 @@
         <article class="article-card">
           <img src="https://source.unsplash.com/collection/893715/640x360" alt="Submission thumbnail" />
           <div class="info">
-            <h3>Week 2
+            <h3>Week 2: Literature Review Bot</h3>
+            <p>How I built a custom chatbot to surface key findings from 50+ research papers on hospital demand.</p>
+            <a href="#" class="
