@@ -113,7 +113,6 @@
   </footer>
 
   <script>
-    // Insert current year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     const sections = document.querySelectorAll('section');
@@ -121,6 +120,31 @@
     const nav = document.getElementById('main-nav');
 
     function showSection(id){
-      sections.forEach(sec=>sec.classList.toggle('active', sec.id===id));
-      // hide nav on landing, show elsewhere
-      nav.style.display = id==='
+      sections.forEach(sec => sec.classList.toggle('active', sec.id===id));
+      nav.style.display = id==='landing' ? 'none' : 'flex';
+      // scroll to top for better UX
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+
+    // click handlers for all triggers (nav links + quick links)
+    triggers.forEach(el =>{
+      el.addEventListener('click', e =>{
+        e.preventDefault();
+        const target = el.dataset.target;
+        showSection(target);
+        history.pushState(null,'','#'+target);
+      });
+    });
+
+    // handle back/forward navigation
+    window.addEventListener('popstate', () =>{
+      const hash = location.hash.replace('#','') || 'landing';
+      showSection(hash);
+    });
+
+    // initial load
+    const initial = location.hash.replace('#','') || 'landing';
+    showSection(initial);
+  </script>
+</body>
+</html>
