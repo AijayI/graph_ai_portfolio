@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Ijeoma | Generative AI Portfolio</title>
+  <title>Ijeoma | Generative AI Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
@@ -20,9 +20,11 @@
     header{background:var(--accent);color:#fff;text-align:center;padding:2.5rem 1rem 2rem;position:relative;}
     header p{opacity:.9;}
     nav{display:flex;justify-content:center;gap:1rem;margin-top:1.4rem;flex-wrap:wrap;}
-    nav a{display:inline-block;padding:.45rem 1.1rem;color:#fff;text-decoration:none;font-weight:600;border:2px solid #fff;border-radius:9999px;transition:all .3s ease;}
+    nav a{display:inline-block;padding:.45rem 1.1rem;color:#fff;text-decoration:none;font-weight:600;border:2px solid #fff;border-radius:9999px;transition:all .3s ease;cursor:pointer;}
     nav a:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);box-shadow:0 3px 6px rgba(0,0,0,.15);}
-    section{padding:3rem 1rem;max-width:900px;margin:0 auto;}
+    /* Sections */
+    section{padding:3rem 1rem;max-width:900px;margin:0 auto;display:none;} /* hide by default */
+    section.active{display:block;} /* show only active section */
     #about{background:#F8F9FA;}
     #about ul{margin-top:1rem;list-style:disc;padding-left:1.5rem;}
     #course ul{margin-top:1rem;list-style:square;padding-left:1.5rem;}
@@ -38,16 +40,16 @@
   <header>
     <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
     <h1>Ijeoma Iwuora</h1>
-    <p>Senior Business Advisor | Data &amp; AI Enthusiast</p>
+    <p>Senior Business Advisor | Data & AI Enthusiast</p>
     <nav>
-      <a href="#about">About Me</a>
-      <a href="#course">About the Course</a>
-      <a href="#submissions">Weekly Submissions</a>
-      <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
+      <a data-target="about">About Me</a>
+      <a data-target="course">About the Course</a>
+      <a data-target="submissions">Weekly Submissions</a>
+      <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
     </nav>
   </header>
 
-  <section id="about">
+  <section id="about" class="active">
     <h2>About Me</h2>
     <p>I’m <strong>Ijeoma</strong>, a Senior Business Advisor at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester and certifications in Advanced Epidemiological Data Science, Biostatistics, and Prosci Change Management, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
     <ul>
@@ -59,14 +61,14 @@
 
   <section id="course">
     <h2>About the Course</h2>
-    <p><em>Generative AI for Work &amp; Research</em> is an eight‑week intensive where participants build practical AI solutions that supercharge productivity. Over the next two months, I will:</p>
+    <p><em>Generative AI for Work & Research</em> is an eight‑week intensive where participants build practical AI solutions that supercharge productivity. Over the next two months, I will:</p>
     <ul>
       <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
       <li>Use AI tools for knowledge organization and literature reviews</li>
       <li>Develop custom chatbots to support projects and teams</li>
       <li>Create professional visuals and presentations with AI</li>
       <li>Apply these skills in a hands‑on capstone project</li>
-      <li>Receive real‑time support in live workshops, help sessions &amp; online forums</li>
+      <li>Receive real‑time support in live workshops, help sessions & online forums</li>
     </ul>
   </section>
 
@@ -74,23 +76,47 @@
     <h2>Weekly Submissions</h2>
     <p>Links will be added here as the course progresses. Stay tuned!</p>
     <ul>
-      <li><a href="#" aria-disabled="true">Week 1 – Automating Data Cleaning (coming soon)</a></li>
-      <li>
-        <a href=""C:\Gapminder\analysis_report.pdf"" target="_blank" rel="noopener">Week 2 – Automated Data Analysis using AI Tools: Health Spending vs Life Expectancy Report (PDF)</a>
-      </li>
-      <li><a href="#" aria-disabled="true">Week 3 – AI‑Generated Visualizations (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 4 – Custom LLM Chatbot (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&amp;A (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 1 – Automating Data Cleaning (coming soon)</a></li>
+      <li><a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/analysis_report.pdf" target="_blank" rel="noopener">Week 2 – Automated Data Analysis using AI Tools: Health Spending vs Life Expectancy Report (PDF)</a></li>
+      <li><a href="#" aria-disabled="true">Week 3 – AI‑Generated Visualizations (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 4 – Custom LLM Chatbot (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&A (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
     </ul>
   </section>
 
   <footer>
-    © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
+    © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <script>
+    // Insert current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Section toggling logic
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('nav a[data-target]');
+
+    function showSection(sectionId) {
+      sections.forEach(sec => {
+        sec.classList.toggle('active', sec.id === sectionId);
+      });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', event => {
+        event.preventDefault();
+        const target = link.dataset.target;
+        showSection(target);
+        history.pushState(null, '', '#' + target); // Update URL hash without page jump
+      });
+    });
+
+    // Show section based on initial hash or default to "about"
+    const initialHash = window.location.hash.replace('#', '') || 'about';
+    showSection(initialHash);
+  </script>
 </body>
 </html>
