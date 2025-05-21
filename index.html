@@ -50,8 +50,7 @@
     <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
     <h1>Ijeoma Iwuora</h1>
     <p>Senior Business Advisor | Data & AI Enthusiast</p>
-    <nav>
-      <a data-target="landing">Home</a>
+    <nav id="main-nav">
       <a data-target="about">About Me</a>
       <a data-target="course">About the Course</a>
       <a data-target="submissions">Weekly Submissions</a>
@@ -105,4 +104,23 @@
       <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&A (coming soon)</a></li>
       <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
       <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></
+      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
+  </footer>
+
+  <script>
+    // Insert current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const sections = document.querySelectorAll('section');
+    const triggers = document.querySelectorAll('[data-target]');
+    const nav = document.getElementById('main-nav');
+
+    function showSection(id){
+      sections.forEach(sec=>sec.classList.toggle('active', sec.id===id));
+      // hide nav on landing, show elsewhere
+      nav.style.display = id==='
