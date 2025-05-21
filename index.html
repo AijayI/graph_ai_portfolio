@@ -27,7 +27,7 @@
     section.active{display:block;}
 
     /* Landing (hero) */
-    #landing{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;text-align:center;display:none;}
+    #landing{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;text-align:center;min-height:60vh;display:flex;flex-direction:column;justify-content:center;}
     #landing h2{font-size:2.2rem;margin-bottom:1rem;color:#fff;}
     #landing p{font-size:1.25rem;margin-bottom:2.5rem;opacity:.9;}
     .cta,.quick-link{background:#fff;color:var(--accent-dark);border:none;border-radius:9999px;padding:.75rem 2rem;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;text-decoration:none;display:inline-block;}
@@ -119,27 +119,4 @@
 
     // Section toggling logic
     const sections = document.querySelectorAll('section');
-    const triggerElements = document.querySelectorAll('[data-target]');
-
-    function showSection(sectionId) {
-      sections.forEach(sec => {
-        sec.classList.toggle('active', sec.id === sectionId);
-      });
-    }
-
-    // Handle clicks on any element with data-target
-    triggerElements.forEach(elem => {
-      elem.addEventListener('click', event => {
-        event.preventDefault();
-        const target = elem.dataset.target;
-        showSection(target);
-        history.pushState(null, '', '#' + target);
-      });
-    });
-
-    // Show section based on initial hash or default to "landing"
-    const initialHash = window.location.hash.replace('#', '') || 'landing';
-    showSection(initialHash);
-  </script>
-</body>
-</html>
+    const triggerElements = document.querySelectorAll('[
