@@ -13,7 +13,7 @@
       --muted: #666;
     }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.4;}
+    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
     h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--accent-dark);margin-bottom:.5em;}
     header h1{color:#fff;}
     .avatar{width:160px;height:160px;object-fit:cover;border:4px solid #fff;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:0 auto 1rem auto;display:block;}
@@ -29,9 +29,10 @@
     /* Landing (hero) */
     #landing{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;text-align:center;display:none;}
     #landing h2{font-size:2.2rem;margin-bottom:1rem;color:#fff;}
-    #landing p{font-size:1.25rem;margin-bottom:2rem;opacity:.9;}
-    .cta{background:#fff;color:var(--accent-dark);border:none;border-radius:9999px;padding:.75rem 2rem;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;}
-    .cta:hover{transform:translateY(-3px);box-shadow:0 6px 15px rgba(0,0,0,.25);}    
+    #landing p{font-size:1.25rem;margin-bottom:2.5rem;opacity:.9;}
+    .cta,.quick-link{background:#fff;color:var(--accent-dark);border:none;border-radius:9999px;padding:.75rem 2rem;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;text-decoration:none;display:inline-block;}
+    .cta:hover,.quick-link:hover{transform:translateY(-3px);box-shadow:0 6px 15px rgba(0,0,0,.25);}    
+    .quick-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
 
     #about{background:#F8F9FA;}
     #about ul{margin-top:1rem;list-style:disc;padding-left:1.5rem;}
@@ -41,7 +42,7 @@
     #submissions a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease;}
     #submissions a:hover{border-color:var(--accent-dark);}    
     footer{background:#f1f1f1;text-align:center;padding:1rem;font-size:.9rem;color:var(--muted);}    
-    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0;}header{background:var(--accent-dark);}#about{background:#1e1e1e;}nav a{color:#e0e0e0;}#submissions a{color:#a5d6a7;}footer{background:#1e1e1e;color:#999;}.avatar{border:4px solid var(--accent-dark);} .cta{background:#1e1e1e;color:#fff;}}
+    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0;}header{background:var(--accent-dark);}#about{background:#1e1e1e;}nav a{color:#e0e0e0;}#submissions a{color:#a5d6a7;}footer{background:#1e1e1e;color:#999;}.avatar{border:4px solid var(--accent-dark);} .cta,.quick-link{background:#1e1e1e;color:#fff;}}
   </style>
 </head>
 <body>
@@ -62,7 +63,12 @@
   <section id="landing" class="active">
     <h2>Welcome, Data Explorers! 🚀</h2>
     <p class="tagline">This portfolio is a playground for <strong>everything data</strong>—from analytics &amp; AI wizardry to storytelling with numbers.</p>
-    <button id="enter-btn" class="cta">Dive In</button>
+
+    <div class="quick-links">
+      <a class="quick-link" data-target="about">About Me</a>
+      <a class="quick-link" data-target="course">About the Course</a>
+      <a class="quick-link" data-target="submissions">Weekly Submissions</a>
+    </div>
   </section>
 
   <section id="about">
@@ -113,7 +119,7 @@
 
     // Section toggling logic
     const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav a[data-target]');
+    const triggerElements = document.querySelectorAll('[data-target]');
 
     function showSection(sectionId) {
       sections.forEach(sec => {
@@ -121,18 +127,15 @@
       });
     }
 
-    // Navbar click handling
-    navLinks.forEach(link => {
-      link.addEventListener('click', event => {
+    // Handle clicks on any element with data-target
+    triggerElements.forEach(elem => {
+      elem.addEventListener('click', event => {
         event.preventDefault();
-        const target = link.dataset.target;
+        const target = elem.dataset.target;
         showSection(target);
         history.pushState(null, '', '#' + target);
       });
     });
-
-    // Hero CTA button handling
-    document.getElementById('enter-btn').addEventListener('click', () => showSection('about'));
 
     // Show section based on initial hash or default to "landing"
     const initialHash = window.location.hash.replace('#', '') || 'landing';
