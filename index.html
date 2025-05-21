@@ -13,7 +13,7 @@
       --muted: #666;
     }
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+    body{font-family:Inter,sans-serif;background:var(--bg);color:var(--text);line-height:1.4;}
     h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--accent-dark);margin-bottom:.5em;}
     header h1{color:#fff;}
     .avatar{width:160px;height:160px;object-fit:cover;border:4px solid #fff;border-radius:50%;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:0 auto 1rem auto;display:block;}
@@ -21,19 +21,27 @@
     header p{opacity:.9;}
     nav{display:flex;justify-content:center;gap:1rem;margin-top:1.4rem;flex-wrap:wrap;}
     nav a{display:inline-block;padding:.45rem 1.1rem;color:#fff;text-decoration:none;font-weight:600;border:2px solid #fff;border-radius:9999px;transition:all .3s ease;cursor:pointer;}
-    nav a:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);box-shadow:0 3px 6px rgba(0,0,0,.15);}
+    nav a:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);box-shadow:0 3px 6px rgba(0,0,0,.15);}    
     /* Sections */
-    section{padding:3rem 1rem;max-width:900px;margin:0 auto;display:none;} /* hide by default */
-    section.active{display:block;} /* show only active section */
+    section{padding:3rem 1rem;max-width:900px;margin:0 auto;display:none;}
+    section.active{display:block;}
+
+    /* Landing (hero) */
+    #landing{background:linear-gradient(135deg,var(--accent) 0%,var(--accent-dark) 100%);color:#fff;text-align:center;display:none;}
+    #landing h2{font-size:2.2rem;margin-bottom:1rem;color:#fff;}
+    #landing p{font-size:1.25rem;margin-bottom:2rem;opacity:.9;}
+    .cta{background:#fff;color:var(--accent-dark);border:none;border-radius:9999px;padding:.75rem 2rem;font-weight:700;font-size:1rem;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease;}
+    .cta:hover{transform:translateY(-3px);box-shadow:0 6px 15px rgba(0,0,0,.25);}    
+
     #about{background:#F8F9FA;}
     #about ul{margin-top:1rem;list-style:disc;padding-left:1.5rem;}
     #course ul{margin-top:1rem;list-style:square;padding-left:1.5rem;}
     #submissions ul{list-style:none;margin-top:1rem;padding-left:0;}
     #submissions li{margin-bottom:.8rem;}
     #submissions a{color:var(--accent-dark);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s ease;}
-    #submissions a:hover{border-color:var(--accent-dark);}
-    footer{background:#f1f1f1;text-align:center;padding:1rem;font-size:.9rem;color:var(--muted);}
-    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0;}header{background:var(--accent-dark);}#about{background:#1e1e1e;}nav a{color:#e0e0e0;}#submissions a{color:#a5d6a7;}footer{background:#1e1e1e;color:#999;}.avatar{border:4px solid var(--accent-dark);} }
+    #submissions a:hover{border-color:var(--accent-dark);}    
+    footer{background:#f1f1f1;text-align:center;padding:1rem;font-size:.9rem;color:var(--muted);}    
+    @media(prefers-color-scheme:dark){body{background:#121212;color:#e0e0e0;}header{background:var(--accent-dark);}#about{background:#1e1e1e;}nav a{color:#e0e0e0;}#submissions a{color:#a5d6a7;}footer{background:#1e1e1e;color:#999;}.avatar{border:4px solid var(--accent-dark);} .cta{background:#1e1e1e;color:#fff;}}
   </style>
 </head>
 <body>
@@ -42,6 +50,7 @@
     <h1>Ijeoma Iwuora</h1>
     <p>Senior Business Advisor | Data & AI Enthusiast</p>
     <nav>
+      <a data-target="landing">Home</a>
       <a data-target="about">About Me</a>
       <a data-target="course">About the Course</a>
       <a data-target="submissions">Weekly Submissions</a>
@@ -49,7 +58,14 @@
     </nav>
   </header>
 
-  <section id="about" class="active">
+  <!-- Fun Landing Page / Hero Section -->
+  <section id="landing" class="active">
+    <h2>Welcome, Data Explorers! 🚀</h2>
+    <p class="tagline">This portfolio is a playground for <strong>everything data</strong>—from analytics &amp; AI wizardry to storytelling with numbers.</p>
+    <button id="enter-btn" class="cta">Dive In</button>
+  </section>
+
+  <section id="about">
     <h2>About Me</h2>
     <p>I’m <strong>Ijeoma</strong>, a Senior Business Advisor at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester and certifications in Advanced Epidemiological Data Science, Biostatistics, and Prosci Change Management, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
     <ul>
@@ -105,17 +121,21 @@
       });
     }
 
+    // Navbar click handling
     navLinks.forEach(link => {
       link.addEventListener('click', event => {
         event.preventDefault();
         const target = link.dataset.target;
         showSection(target);
-        history.pushState(null, '', '#' + target); // Update URL hash without page jump
+        history.pushState(null, '', '#' + target);
       });
     });
 
-    // Show section based on initial hash or default to "about"
-    const initialHash = window.location.hash.replace('#', '') || 'about';
+    // Hero CTA button handling
+    document.getElementById('enter-btn').addEventListener('click', () => showSection('about'));
+
+    // Show section based on initial hash or default to "landing"
+    const initialHash = window.location.hash.replace('#', '') || 'landing';
     showSection(initialHash);
   </script>
 </body>
