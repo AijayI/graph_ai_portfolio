@@ -12,22 +12,36 @@
       --text: #222;
       --muted: #666;
     }
-    *{margin:0;padding:0;box-sizing:border-box;}
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     body {
       font-family: Inter, sans-serif;
       background: var(--bg) url('https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png') no-repeat center center fixed;
-      background-size: 40%; /* Adjust the size of the graph watermark */
+      background-size: 40%; /* Subtle background graph */
       color: var(--text);
       line-height: 1.2;
+      background-color: #f9f9f9; /* Light background for better readability */
     }
+
     h1, h2, h3 {
       font-family: Georgia, "Times New Roman", serif;
       color: var(--accent-dark);
       margin-bottom: .5em;
     }
-    header h1 {
+
+    header {
+      background: var(--accent);
       color: #fff;
+      text-align: center;
+      padding: 2.5rem 1rem 2rem;
+      position: relative;
     }
+
+    header p {
+      opacity: .9;
+    }
+
     .avatar {
       width: 160px;
       height: 160px;
@@ -38,16 +52,7 @@
       margin: 0 auto 1rem auto;
       display: block;
     }
-    header {
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-      padding: 2.5rem 1rem 2rem;
-      position: relative;
-    }
-    header p {
-      opacity: .9;
-    }
+
     nav {
       display: flex;
       justify-content: center;
@@ -55,6 +60,7 @@
       margin-top: 1.4rem;
       flex-wrap: wrap;
     }
+
     nav a {
       display: inline-block;
       padding: .45rem 1.1rem;
@@ -65,47 +71,57 @@
       border-radius: 9999px;
       transition: all .3s ease;
     }
+
     nav a:hover {
       background: #fff;
       color: var(--accent-dark);
       transform: translateY(-2px);
       box-shadow: 0 3px 6px rgba(0,0,0,.15);
     }
+
     section {
       padding: 3rem 1rem;
       max-width: 900px;
       margin: 0 auto;
     }
+
     #about {
       background: #F8F9FA;
     }
+
     #about ul {
       margin-top: 1rem;
       list-style: disc;
       padding-left: 1.5rem;
     }
+
     #course ul {
       margin-top: 1rem;
       list-style: square;
       padding-left: 1.5rem;
     }
+
     #submissions ul {
       list-style: none;
       margin-top: 1rem;
       padding-left: 0;
     }
+
     #submissions li {
       margin-bottom: .8rem;
     }
+
     #submissions a {
       color: var(--accent-dark);
       text-decoration: none;
       border-bottom: 1px solid transparent;
       transition: border-color .2s ease;
     }
+
     #submissions a:hover {
       border-color: var(--accent-dark);
     }
+
     footer {
       background: #f1f1f1;
       text-align: center;
@@ -113,27 +129,34 @@
       font-size: .9rem;
       color: var(--muted);
     }
+
     @media(prefers-color-scheme: dark) {
       body {
         background: #121212;
         color: #e0e0e0;
       }
+
       header {
         background: var(--accent-dark);
       }
+
       #about {
         background: #1e1e1e;
       }
+
       nav a {
         color: #e0e0e0;
       }
+
       #submissions a {
         color: #a5d6a7;
       }
+
       footer {
         background: #1e1e1e;
         color: #999;
       }
+
       .avatar {
         border: 4px solid var(--accent-dark);
       }
