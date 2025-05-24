@@ -5,26 +5,129 @@
   <title>Ijeoma | Generative AI Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    body {
-      font-family: Inter, sans-serif;
-      background-color: #e0f7fa;  /* Light green-blue background */
-      color: #222;  /* Dark text for readability */
-      text-align: center;
-      margin: 0;
-      padding: 0;
+    :root {
+      --accent: #1B5E20;  /* Accent green */
+      --accent-dark: #2E7D32; /* Darker green for highlights */
+      --bg: #e0f7fa;  /* Light green-blue background */
+      --text: #222;   /* Dark text for readability */
+      --muted: #666;  /* Muted text color */
+      --box-bg: #ffffff; /* White background for sections */
+      --box-border: #2E7D32; /* Green border for square boxes */
+      --box-padding: 2rem; /* Padding inside boxes */
     }
 
-    canvas {
-      margin-top: 20px;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      border: 2px solid #2E7D32;  /* Green border for the boxes */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Inter, sans-serif;
+      background: var(--bg) url('https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png') no-repeat center center fixed;
+      background-size: 40%;
+      color: var(--text);
+      line-height: 1.6;
+      padding: 0;
     }
 
     h1, h2, h3 {
       font-family: Georgia, "Times New Roman", serif;
-      color: #2E7D32; /* Darker green */
+      color: var(--accent-dark);
+      margin-bottom: .5em;
+    }
+
+    header {
+      background: var(--accent);
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+    }
+
+    header p {
+      opacity: .9;
+    }
+
+    .avatar {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border: 4px solid #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0,0,0,.1);
+      margin: 0 auto 1rem auto;
+      display: block;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: .45rem 1.1rem;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid #fff;
+      border-radius: 9999px;
+      transition: all .3s ease;
+    }
+
+    nav a:hover {
+      background: #fff;
+      color: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 3px 6px rgba(0,0,0,.15);
+    }
+
+    section {
+      background: var(--box-bg);
+      border: 2px solid var(--box-border);
+      border-radius: 8px;  /* Rounded corners */
+      padding: var(--box-padding);
+      margin: 2rem 0;
+      max-width: 600px;  /* Limit width of each section */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #about, #course, #submissions {
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    #about ul {
+      margin-top: 1rem;
+      list-style: disc;
+      padding-left: 1.5rem;
+    }
+
+    #course ul {
+      margin-top: 1rem;
+      list-style: square;
+      padding-left: 1.5rem;
+    }
+
+    #submissions ul {
+      list-style: none;
+      margin-top: 1rem;
+      padding-left: 0;
+    }
+
+    #submissions li {
+      margin-bottom: .8rem;
+    }
+
+    #submissions a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color .2s ease;
+    }
+
+    #submissions a:hover {
+      border-color: var(--accent-dark);
     }
 
     footer {
@@ -32,67 +135,97 @@
       text-align: center;
       padding: 1rem;
       font-size: .9rem;
-      color: #666;
+      color: var(--muted);
+    }
+
+    @media(prefers-color-scheme: dark) {
+      body {
+        background: #121212;
+        color: #e0e0e0;
+      }
+
+      header {
+        background: var(--accent-dark);
+      }
+
+      #about, #course, #submissions {
+        background: #1e1e1e;
+      }
+
+      nav a {
+        color: #e0e0e0;
+      }
+
+      #submissions a {
+        color: #a5d6a7;
+      }
+
+      footer {
+        background: #1e1e1e;
+        color: #999;
+      }
+
+      .avatar {
+        border: 4px solid var(--accent-dark);
+      }
     }
   </style>
 </head>
 <body>
+  <header>
+    <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
+    <h1>Ijeoma Iwuora</h1>
+    <p>Senior Business Advisor | Data &amp; AI Enthusiast</p>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#course">About the Course</a>
+      <a href="#submissions">Weekly Submissions</a>
+      <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
+    </nav>
+  </header>
 
-  <h1>Ijeoma Iwuora | Generative AI Portfolio</h1>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I’m <strong>Ijeoma</strong>, a Senior Business Advisor at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester, UK, and certifications in Advanced Epidemiological Data Science and Biostatistics, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
+    <ul>
+      <li><strong>Core Skills:</strong> SQL • Python • R • Data Visualization • Forecasting • Generative AI</li>
+      <li><strong>What I'm doing now:</strong> Automating data pipelines, building AI‑powered dashboards, and exploring LLM agents for rapid literature reviews and analyzing unstructured text data.</li>
+      <li><strong>Outside work:</strong> Soccer mom to four energetic kids and an avid lover of coastal walks.</li>
+    </ul>
+  </section>
 
-  <!-- Canvas for the sections -->
-  <canvas id="myCanvas" width="800" height="600"></canvas>
+  <section id="course">
+    <h2>About the Course</h2>
+    <p><em>Generative AI for Work &amp; Research</em> is an eight‑week intensive where participants build practical AI solutions that supercharge productivity. Over the next two months, I will:</p>
+    <ul>
+      <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
+      <li>Use AI tools for knowledge organization and literature reviews</li>
+      <li>Develop custom chatbots to support projects and teams</li>
+      <li>Create professional visuals and presentations with AI</li>
+      <li>Apply these skills in a hands‑on capstone project</li>
+      <li>Receive real‑time support in live workshops, help sessions &amp; online forums</li>
+    </ul>
+  </section>
+
+  <section id="submissions">
+    <h2>Weekly Submissions</h2>
+    <p>Links will be added here as the course progresses. Stay tuned!</p>
+    <ul>
+      <li><a href="https://aijayi.github.io/graph_ai_portfolio/" target="_blank" rel="noopener"> Week 1 – Automating Data Cleaning</a></li>
+      <li><a href="https://aijayi.github.io/graph_ai_portfolio/analysis_report.html" target="_blank" rel="noopener">Week 2 – Automated Data Analysis using AI Tools: 2010 Health Spending vs Life Expectancy Analysis Report</a></li>
+      <li><a href="https://aijayi.github.io/graph_ai_portfolio/job_market_report.html" target="_blank" rel="noopener">Week 3 – AI‑Generated Visualizations (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 4 – Custom LLM Chatbot (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&amp;A (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
+      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
+    </ul>
+  </section>
 
   <footer>
     © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
   </footer>
 
-  <script>
-    // Set up the canvas and context
-    var canvas = document.getElementById('myCanvas');
-    var ctx = canvas.getContext('2d');
-
-    // Set the canvas background color
-    ctx.fillStyle = "#e0f7fa"; // Light green-blue background
-    ctx.fillRect(0, 0, canvas.width, canvas.height); // Fill the canvas with background color
-
-    // Function to draw the square boxes with text
-    function drawBox(x, y, width, height, title, text) {
-      ctx.fillStyle = "#ffffff"; // White background for the box
-      ctx.fillRect(x, y, width, height); // Draw the box
-
-      // Set the border color and width for the box
-      ctx.strokeStyle = "#2E7D32"; // Green border
-      ctx.lineWidth = 2;
-      ctx.strokeRect(x, y, width, height); // Draw the border around the box
-
-      // Set the text style for the title
-      ctx.fillStyle = "#2E7D32"; // Dark green for text
-      ctx.font = "24px Georgia"; // Font for title
-      ctx.fillText(title, x + 10, y + 30); // Title text
-
-      // Set the text style for the content
-      ctx.fillStyle = "#222"; // Dark text color for content
-      ctx.font = "16px Arial"; // Font for content
-      var lines = text.split('\n'); // Split text into lines
-      var lineHeight = 30;
-      for (var i = 0; i < lines.length; i++) {
-        ctx.fillText(lines[i], x + 10, y + 60 + i * lineHeight); // Content text
-      }
-    }
-
-    // Draw "About Me" Box
-    drawBox(50, 50, 700, 150, "About Me", "I’m Ijeoma, a Senior Business Advisor at Vancouver Coastal Health.\nWith a decade of experience transforming complex healthcare data\ninto actionable insights.");
-
-    // Draw "About the Course" Box
-    drawBox(50, 220, 700, 150, "About the Course", "Generative AI for Work & Research is an eight-week intensive.\nParticipants build practical AI solutions to supercharge productivity.");
-
-    // Draw "Weekly Submissions" Box
-    drawBox(50, 390, 700, 150, "Weekly Submissions", "Week 1 – Automating Data Cleaning\nWeek 2 – AI Data Analysis\nWeek 3 – AI-Generated Visualizations");
-
-    // Footer Year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
+  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
 </body>
 </html>
