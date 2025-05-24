@@ -11,9 +11,7 @@
       --bg: #e0f7fa;  /* Light green-blue background */
       --text: #222;   /* Dark text for readability */
       --muted: #666;  /* Muted text color */
-      --box-bg: #ffffff; /* White background for sections */
-      --box-border: #2E7D32; /* Green border for square boxes */
-      --box-padding: 2rem; /* Padding inside boxes */
+      --name-color: #fff; /* Set white color for the name */
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -24,7 +22,6 @@
       background-size: 40%;
       color: var(--text);
       line-height: 1.6;
-      padding: 0;
     }
 
     h1, h2, h3 {
@@ -39,6 +36,10 @@
       text-align: center;
       padding: 3rem 1rem 2rem;
       position: relative;
+    }
+
+    header h1 {
+      color: var(--name-color); /* Apply white color to the name */
     }
 
     header p {
@@ -83,51 +84,9 @@
     }
 
     section {
-      background: var(--box-bg);
-      border: 2px solid var(--box-border);
-      border-radius: 8px;  /* Rounded corners */
-      padding: var(--box-padding);
-      margin: 2rem 0;
-      max-width: 600px;  /* Limit width of each section */
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    #about, #course, #submissions {
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    #about ul {
-      margin-top: 1rem;
-      list-style: disc;
-      padding-left: 1.5rem;
-    }
-
-    #course ul {
-      margin-top: 1rem;
-      list-style: square;
-      padding-left: 1.5rem;
-    }
-
-    #submissions ul {
-      list-style: none;
-      margin-top: 1rem;
-      padding-left: 0;
-    }
-
-    #submissions li {
-      margin-bottom: .8rem;
-    }
-
-    #submissions a {
-      color: var(--accent-dark);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: border-color .2s ease;
-    }
-
-    #submissions a:hover {
-      border-color: var(--accent-dark);
+      padding: 3rem 1rem;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     footer {
@@ -136,38 +95,6 @@
       padding: 1rem;
       font-size: .9rem;
       color: var(--muted);
-    }
-
-    @media(prefers-color-scheme: dark) {
-      body {
-        background: #121212;
-        color: #e0e0e0;
-      }
-
-      header {
-        background: var(--accent-dark);
-      }
-
-      #about, #course, #submissions {
-        background: #1e1e1e;
-      }
-
-      nav a {
-        color: #e0e0e0;
-      }
-
-      #submissions a {
-        color: #a5d6a7;
-      }
-
-      footer {
-        background: #1e1e1e;
-        color: #999;
-      }
-
-      .avatar {
-        border: 4px solid var(--accent-dark);
-      }
     }
   </style>
 </head>
