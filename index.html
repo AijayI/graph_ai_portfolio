@@ -16,27 +16,27 @@
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
-body {
-  font-family: Inter, sans-serif;
-  color: var(--text);
-  line-height: 1.6;
-  position: relative; /* Needed to position the watermark correctly */
-}
+    body {
+      font-family: Inter, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+      position: relative; /* Needed to position the watermark correctly */
+      background-color: var(--bg);
+    }
 
-body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%; /* Center the watermark horizontally */
-  transform: translateX(-50%); /* Adjust to perfectly center the watermark */
-  width: 25%; /* Adjust the size of the watermark (smaller) */
-  height: 100%; /* Cover the full height */
-  background: url('https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png') no-repeat center center;
-  background-size: contain; /* Ensure the image is contained and resizes */
-  opacity: 0.1; /* Make the watermark subtle */
-  pointer-events: none; /* Allow interaction with the content */
-}
-
+    body::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 50%; /* Center the watermark horizontally */
+      transform: translateX(-50%); /* Adjust to perfectly center the watermark */
+      width: 25%; /* Adjust the size of the watermark (smaller) */
+      height: 100%; /* Cover the full height */
+      background: url('https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png') no-repeat center center;
+      background-size: contain; /* Ensure the image is contained and resizes */
+      opacity: 0.1; /* Make the watermark subtle */
+      pointer-events: none; /* Allow interaction with the content */
+    }
 
     h1, h2, h3 {
       font-family: Georgia, "Times New Roman", serif;
@@ -110,13 +110,28 @@ body::after {
       font-size: .9rem;
       color: var(--muted);
     }
+
+    /* Mobile responsiveness */
+    @media screen and (max-width: 768px) {
+      header {
+        padding: 2rem 1rem 1rem;
+      }
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
     <h1>Ijeoma Iwuora</h1>
-    <p>Senior Business Advisor | Data &amp; AI Enthusiast</p>
+    <p>Data Analyst | Data &amp; AI Enthusiast</p>
     <nav>
       <a href="#about">About Me</a>
       <a href="#course">About the Course</a>
@@ -127,7 +142,7 @@ body::after {
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I’m <strong>Ijeoma</strong>, a Senior Business Advisor at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester, UK, and certifications in Advanced Epidemiological Data Science and Biostatistics, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
+    <p>I’m <strong>Ijeoma</strong>, a Data Analyst at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester, UK, and certifications in Advanced Epidemiological Data Science and Biostatistics, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
     <ul>
       <li><strong>Core Skills:</strong> SQL • Python • R • Data Visualization • Forecasting • Generative AI</li>
       <li><strong>What I'm doing now:</strong> Automating data pipelines, building AI‑powered dashboards, and exploring LLM agents for rapid literature reviews and analyzing unstructured text data.</li>
