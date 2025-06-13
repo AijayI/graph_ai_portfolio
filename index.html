@@ -79,6 +79,10 @@
     .card:hover{transform:translateY(-4px);box-shadow:0 8px 16px rgba(0,0,0,.18);border-color:var(--accent-bright);}  
     .card h3{margin-bottom:.5rem;color:var(--accent-dark);}  
 
+    /* Iframe container (Consultation Form) */
+    .iframe-container{position:relative;padding-bottom:130%;height:0;overflow:hidden;border-radius:1rem;border:2px solid var(--accent-dark);} 
+    .iframe-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
     /* Body links */
     section a:not(.card){color:var(--accent-dark);text-decoration:underline 2px var(--accent-bright);text-underline-offset:3px;transition:color .2s;}
     section a:not(.card):hover{color:var(--accent-bright);}  
@@ -103,6 +107,7 @@
       <a href="#about">About Me</a>
       <a href="#course">About the Course</a>
       <a href="#submissions">Weekly Submissions</a>
+      <a href="#consultation">Consultation</a>
       <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
     </nav>
   </header>
@@ -130,6 +135,8 @@
       <li>Apply these skills in a hands‑on capstone project</li>
       <li>Receive real‑time support in live workshops, help sessions & online forums</li>
     </ul>
+  </section>
+
   <!-- SUBMISSIONS -->
   <section id="submissions" class="hidden">
     <h2>Weekly Submissions</h2>
@@ -167,6 +174,15 @@
         <h3>Week 8</h3>
         <p>Capstone Showcase (coming soon)</p>
       </div>
+    </div>
+  </section>
+
+  <!-- CONSULTATION FORM -->
+  <section id="consultation" class="hidden">
+    <h2>Book a Consultation</h2>
+    <p>If you’d like to chat about data projects, healthcare analytics, or potential collaborations, feel free to pick a time below:</p>
+    <div class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSctsb1i6YjJFG76HhX3oi3ZfxPcAe6xwCrUTZpnxNT5wloQkA/viewform?embedded=true" allowfullscreen loading="lazy">Loading…</iframe>
     </div>
   </section>
 
@@ -213,7 +229,7 @@
           io.unobserve(e.target);
         }
       });
-    }, {threshold: 0.15});
+    }, { threshold: 0.15 });
     document.querySelectorAll('.hidden').forEach(el => io.observe(el));
 
     // Scroll‑spy nav
@@ -224,7 +240,7 @@
         const idx = sections.indexOf(e.target);
         if (idx > -1) navLinks[idx].classList.toggle('active', e.isIntersecting);
       });
-    }, {threshold: 0.6});
+    }, { threshold: 0.6 });
     sections.forEach(s => spy.observe(s));
   </script>
 </body>
