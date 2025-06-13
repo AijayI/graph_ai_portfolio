@@ -1,137 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <title>Ijeoma | Generative AI Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
+    /* ----------------------------
+       THEME VARIABLES              
+       ----------------------------*/
     :root {
-      --accent: #1B5E20;  /* Accent green */
+      --accent: #1B5E20;      /* Accent green */
       --accent-dark: #2E7D32; /* Darker green for highlights */
-      --bg: #e0f7fa;  /* Light green-blue background */
-      --text: #222;   /* Dark text for readability */
-      --muted: #666;  /* Muted text color */
-      --name-color: #fff; /* Set white color for the name */
+      --bg: #e0f7fa;          /* Light green‑blue background */
+      --text: #222;           /* Dark text for readability */
+      --muted: #666;          /* Muted text */
+      --name-color: #fff;     /* Name in header */
+    }
+    /* Dark‑mode overrides */
+    [data-theme='dark'] {
+      --bg: #121212;
+      --text: #eee;
+      --muted: #aaa;
+      --accent: #2E7D32;
+      --accent-dark: #66bb6a;
+      --name-color: #fff;
     }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* ----------------------------
+       BASE STYLES                 
+       ----------------------------*/
+    * {margin:0;padding:0;box-sizing:border-box;}
 
     body {
       font-family: Inter, sans-serif;
+      background: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      position: relative; /* Needed to position the watermark correctly */
-      background-color: var(--bg);
+      position: relative;           /* watermark positioning */
+      scroll-behavior: smooth;      /* nicer anchor jumps */
+      transition: background .3s, color .3s;
     }
 
+    /* Subtle watermark */
     body::after {
       content: "";
       position: absolute;
-      top: 0;
-      left: 50%; /* Center the watermark horizontally */
-      transform: translateX(-50%); /* Adjust to perfectly center the watermark */
-      width: 25%; /* Adjust the size of the watermark (smaller) */
-      height: 100%; /* Cover the full height */
-      background: url('https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png') no-repeat center center;
-      background-size: contain; /* Ensure the image is contained and resizes */
-      opacity: 0.1; /* Make the watermark subtle */
-      pointer-events: none; /* Allow interaction with the content */
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 25%; height: 100%;
+      background: url("https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png") no-repeat center center / contain;
+      opacity: .08;
+      pointer-events: none;
     }
 
-    h1, h2, h3 {
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--accent-dark);
-      margin-bottom: .5em;
-    }
+    h1,h2,h3 {font-family: Georgia,"Times New Roman",serif;color:var(--accent-dark);margin-bottom:.5em;}
 
+    /* ----------------------------
+       HEADER  (banner + avatar)   
+       ----------------------------*/
     header {
-      background: var(--accent);
-      color: #fff;
-      text-align: center;
-      padding: 3rem 1rem 2rem;
-      position: relative;
+      background: linear-gradient(rgba(27,94,32,.9), rgba(27,94,32,.9)),
+                  url("https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg") center/cover no-repeat;
+      color:#fff;
+      text-align:center;
+      padding:3.5rem 1rem 2.5rem;
+      position:relative;
     }
 
-    header h1 {
-      color: var(--name-color); /* Apply white color to the name */
-    }
-
-    header p {
-      opacity: .9;
-    }
+    header h1 {color:var(--name-color);margin-top:.6rem;}
+    header p {opacity:.9;}
 
     .avatar {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border: 4px solid #fff;
-      border-radius: 50%;
-      box-shadow: 0 4px 10px rgba(0,0,0,.1);
-      margin: 0 auto 1rem auto;
-      display: block;
+      width:160px;height:160px;
+      object-fit:cover;
+      border:4px solid #fff;
+      border-radius:50%;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+      margin:0 auto 1rem;
     }
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.4rem;
-      flex-wrap: wrap;
+    /* Theme toggle */
+    #themeToggle {
+      position:absolute;top:1rem;right:1rem;
+      background:transparent;
+      color:#fff;
+      border:2px solid #fff;
+      border-radius:9999px;
+      padding:.4rem .75rem;
+      font-size:1rem;cursor:pointer;
+      transition:background .3s,color .3s,transform .3s;
     }
+    #themeToggle:hover {background:#fff;color:var(--accent-dark);transform:translateY(-2px);}
 
+    /* Navigation */
+    nav {display:flex;justify-content:center;gap:1rem;margin-top:1.4rem;flex-wrap:wrap;}
     nav a {
-      display: inline-block;
-      padding: .45rem 1.1rem;
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-      border: 2px solid #fff;
-      border-radius: 9999px;
-      transition: all .3s ease;
+      padding:.45rem 1.1rem;
+      color:#fff;text-decoration:none;font-weight:600;
+      border:2px solid #fff;border-radius:9999px;
+      transition:all .3s ease;
+    }
+    nav a:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);box-shadow:0 3px 6px rgba(0,0,0,.15);}    
+    nav a.active{background:#fff;color:var(--accent-dark);} /* scroll‑spy */
+
+    /* ----------------------------
+       PROGRESS BAR                
+       ----------------------------*/
+    #progress {
+      position:fixed;top:0;left:0;height:4px;width:0;
+      background:var(--accent-dark);z-index:9999;transition:width .2s;
     }
 
-    nav a:hover {
-      background: #fff;
-      color: var(--accent-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 3px 6px rgba(0,0,0,.15);
-    }
+    /* ----------------------------
+       SECTIONS + ANIMATIONS       
+       ----------------------------*/
+    section {padding:3rem 1rem;max-width:900px;margin:0 auto;}
 
-    section {
-      padding: 3rem 1rem;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+    /* Fade‑in */
+    .hidden{opacity:0;transform:translateY(20px);}
+    .visible{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s ease-out;}
 
-    footer {
-      background: #f1f1f1;
-      text-align: center;
-      padding: 1rem;
-      font-size: .9rem;
-      color: var(--muted);
+    /* Project cards grid (weekly submissions) */
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
+    .card{
+      background:#fff; /* light default */
+      border:2px solid var(--accent-dark);
+      border-radius:1rem;
+      padding:1rem;
+      transition:transform .25s,box-shadow .25s;
     }
+    [data-theme='dark'] .card{background:#1e1e1e;}
+    .card:hover{transform:translateY(-4px);box-shadow:0 6px 12px rgba(0,0,0,.15);}   
+    .card h3{margin-bottom:.5rem;color:var(--accent-dark);}  
 
-    /* Mobile responsiveness */
-    @media screen and (max-width: 768px) {
-      header {
-        padding: 2rem 1rem 1rem;
-      }
-      .avatar {
-        width: 120px;
-        height: 120px;
-      }
-      nav {
-        flex-direction: column;
-        gap: 1rem;
-      }
+    footer{background:#f1f1f1;text-align:center;padding:1rem;font-size:.9rem;color:var(--muted);}  
+    [data-theme='dark'] footer{background:#1e1e1e;}
+
+    /* ----------------------------
+       RESPONSIVE                  
+       ----------------------------*/
+    @media(max-width:768px){
+      header{padding:2.5rem 1rem 1.5rem;}
+      .avatar{width:120px;height:120px;}
+      nav{flex-direction:column;gap:1rem;}
     }
   </style>
 </head>
 <body>
+  <!-- reading progress bar -->
+  <div id="progress"></div>
+
+  <!-- Header / Banner -->
   <header>
+    <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
     <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
     <h1>Ijeoma Iwuora</h1>
-    Population health Professional | Researcher | Data &amp; AI Enthusiast</p>
+    <p id="subtitle"></p> <!-- typewriter target -->
+
     <nav>
       <a href="#about">About Me</a>
       <a href="#course">About the Course</a>
@@ -139,7 +164,9 @@
       <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
     </nav>
   </header>
-  <section id="about">
+
+  <!-- About section -->
+  <section id="about" class="hidden">
     <h2>About Me</h2>
     <p>I’m <strong>Ijeoma</strong>, a Data Analyst at Vancouver Coastal Health with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester, UK, and certifications in Advanced Epidemiological Data Science and Biostatistics, I bridge the worlds of public health, analytics, and organizational change. My current passion is harnessing Generative AI to streamline hospital forecasting and empower teams to make data‑driven decisions faster.</p>
     <ul>
@@ -148,7 +175,9 @@
       <li><strong>Outside work:</strong> Soccer mom to four energetic kids and an avid lover of coastal walks.</li>
     </ul>
   </section>
-  <section id="course">
+
+  <!-- Course section -->
+  <section id="course" class="hidden">
     <h2>About the Course</h2>
     <p><em>Generative AI for Work &amp; Research</em> is an eight‑week intensive where participants build practical AI solutions that supercharge productivity. Over the next two months, I will:</p>
     <ul>
@@ -160,25 +189,114 @@
       <li>Receive real‑time support in live workshops, help sessions &amp; online forums</li>
     </ul>
   </section>
-  <section id="submissions">
+
+  <!-- Weekly submissions section -->
+  <section id="submissions" class="hidden">
     <h2>Weekly Submissions</h2>
-    <p>Links will be added here as the course progresses. Stay tuned!</p>
-    <ul>
-      <li><a href="https://aijayi.github.io/graph_ai_portfolio/" target="_blank" rel="noopener"> Week 1 – Automating Data Cleaning</a></li>
-      <li><a href="https://aijayi.github.io/graph_ai_portfolio/analysis_report.html" target="_blank" rel="noopener">Week 2 – Automated Data Analysis using AI Tools: 2010 Health Spending vs Life Expectancy Analysis (click here to view report)</a></li>
-      <li><a href="https://aijayi.github.io/graph_ai_portfolio/job_market_report.html" target="_blank" rel="noopener">Week 3 – AI‑Generated Visualizations (click here to view report)</a></li>
-      <li><a href="#" aria-disabled="true">Week 4 – Custom LLM Chatbot (click here to view)</a></li>
-      <li><a href="#" aria-disabled="true">Week 5 – Knowledge‑Base Q&amp;A (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 6 – Automating Reporting (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 7 – Capstone Planning (coming soon)</a></li>
-      <li><a href="#" aria-disabled="true">Week 8 – Capstone Showcase (coming soon)</a></li>
-    </ul>
+    <p>Click a card to view the work:</p>
+    <div class="card-grid">
+      <a class="card" href="https://aijayi.github.io/graph_ai_portfolio/" target="_blank" rel="noopener">
+        <h3>Week 1</h3>
+        <p>Automating Data Cleaning</p>
+      </a>
+      <a class="card" href="https://aijayi.github.io/graph_ai_portfolio/analysis_report.html" target="_blank" rel="noopener">
+        <h3>Week 2</h3>
+        <p>2010 Health Spending vs Life Expectancy</p>
+      </a>
+      <a class="card" href="https://aijayi.github.io/graph_ai_portfolio/job_market_report.html" target="_blank" rel="noopener">
+        <h3>Week 3</h3>
+        <p>AI‑Generated Visualizations</p>
+      </a>
+      <div class="card" aria-disabled="true">
+        <h3>Week 4</h3>
+        <p>Custom LLM Chatbot (coming soon)</p>
+      </div>
+      <div class="card" aria-disabled="true">
+        <h3>Week 5</h3>
+        <p>Knowledge‑Base Q&amp;A (coming soon)</p>
+      </div>
+      <div class="card" aria-disabled="true">
+        <h3>Week 6</h3>
+        <p>Automating Reporting (coming soon)</p>
+      </div>
+      <div class="card" aria-disabled="true">
+        <h3>Week 7</h3>
+        <p>Capstone Planning (coming soon)</p>
+      </div>
+      <div class="card" aria-disabled="true">
+        <h3>Week 8</h3>
+        <p>Capstone Showcase (coming soon)</p>
+      </div>
+    </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
   </footer>
 
-  <script>document.getElementById('year').textContent=new Date().getFullYear();</script>
+  <!-- ---------------------------
+       SCRIPTS                    
+       ----------------------------->
+  <script>
+    /* --- dynamic year --- */
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    /* --- dark / light toggle --- */
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+      toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    /* --- typewriter intro --- */
+    const subtitleText = 'Population Health Pro | Researcher | Data & AI Nerd';
+    let idx = 0;
+    (function type() {
+      document.getElementById('subtitle').textContent = subtitleText.slice(0, idx++);
+      if (idx <= subtitleText.length) setTimeout(type, 60);
+    })();
+
+    /* --- reading progress bar --- */
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (scrollPos / docHeight) * 100;
+      progress.style.width = scrolled + '%';
+    });
+
+    /* --- fade‑in on scroll --- */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.15});
+
+    document.querySelectorAll('.hidden').forEach(el => observer.observe(el));
+
+    /* --- scroll‑spy nav highlight --- */
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const sectionIds = Array.from(navLinks).map(link => link.getAttribute('href'));
+
+    const spyObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const idx = sectionIds.indexOf('#' + entry.target.id);
+        if (idx !== -1) {
+          navLinks[idx].classList.toggle('active', entry.isIntersecting);
+        }
+      });
+    }, {threshold: 0.6});
+
+    sectionIds.forEach(id => {
+      const sec = document.querySelector(id);
+      if (sec) spyObserver.observe(sec);
+    });
+  </script>
 </body>
 </html>
