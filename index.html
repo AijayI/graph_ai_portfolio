@@ -203,6 +203,16 @@
     // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Local time updater
+function updateTime() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('localTime').textContent = `🕒 Local Time: ${timeStr}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+
     // Theme toggle
     const toggleBtn = document.getElementById('themeToggle');
     toggleBtn.addEventListener('click', () => {
