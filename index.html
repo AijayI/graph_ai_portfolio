@@ -229,12 +229,27 @@ updateTime();
     });
 
     // Typewriter subtitle
-    const subtitle = Hi, I’m Ijeoma — passionate about turning data into decisions and building with Generative AI;
-    let i = 0;
-    (function type() {
-      document.getElementById('subtitle').textContent = subtitle.slice(0, i++);
-      if (i <= subtitle.length) setTimeout(type, 55);
-    })();
+ const subtitles = [
+  "Hi, I’m Ijeoma — passionate about turning data into decisions.",
+  "I build with Generative AI to improve healthcare delivery.",
+  "AI | Data | Public Health — bridging it all together."
+];
+let i = 0, j = 0;
+function typeDynamic() {
+  const text = subtitles[j];
+  document.getElementById('subtitle').textContent = text.slice(0, ++i);
+  if (i < text.length) {
+    setTimeout(typeDynamic, 60);
+  } else {
+    setTimeout(() => {
+      i = 0;
+      j = (j + 1) % subtitles.length;
+      typeDynamic();
+    }, 2500);
+  }
+}
+typeDynamic();
+
 
     // Progress bar
     const progress = document.getElementById('progress');
