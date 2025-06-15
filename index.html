@@ -96,8 +96,18 @@
   </style>
 </head>
 
-<body>
 
+
+<body>
+  <div id="progress"></div>
+      <button id="langToggle" aria-label="Toggle language" style="
+  position: absolute; top: 1rem; left: 1rem;
+  background: transparent; color: #fff;
+  border: 2px solid #fff; border-radius: 9999px;
+  padding: .4rem .75rem; font-size: 1rem;
+  cursor: pointer; transition: background .3s, color .3s, transform .3s;">
+  🇫🇷 FR
+</button>
 
   <!-- HEADER -->
   <header>
@@ -113,10 +123,7 @@
       <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
     </nav>
   </header>
-  <!-- Language Toggle Button -->
- <button id="langToggle" aria-label="Toggle language">
-    🇫🇷 FR
-  </button>
+
   <!-- ABOUT Section with EN/FR Toggle -->
 <section id="about" class="hidden">
   <h2><span data-en="About Me" data-fr="À propos de moi"></span></h2>
@@ -309,4 +316,3 @@ typeDynamic();
   padding: 0.6rem 1rem; border-radius: 30px; font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none;
   z-index: 9999;">💬 Give Feedback</a>
-
