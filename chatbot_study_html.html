@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot Psychosocial Effects Study</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .title {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff, #ffff00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.2) drop-shadow(0 0 20px rgba(0, 212, 255, 0.5)); }
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #a0a0a0;
+            margin-bottom: 10px;
+        }
+
+        .authors {
+            font-size: 0.9em;
+            color: #707070;
+        }
+
+        .study-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .central-hub {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 50px 0;
+            position: relative;
+        }
+
+        .ai-core {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #00d4ff 0%, #0066cc 50%, #003366 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-weight: bold;
+            position: relative;
+            animation: pulse 2s infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ai-core:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.8);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.8); }
+            100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.4); }
+        }
+
+        .interaction-modes {
+            position: absolute;
+            left: -300px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .conversation-types {
+            position: absolute;
+            right: -300px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .mode-item, .type-item {
+            margin: 20px 0;
+            padding: 15px 25px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mode-item:before, .type-item:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .mode-item:hover:before, .type-item:hover:before {
+            left: 100%;
+        }
+
+        .text-mode {
+            background: linear-gradient(135deg, #4a5568, #2d3748);
+            border: 2px solid #718096;
+        }
+
+        .neutral-voice {
+            background: linear-gradient(135deg, #805ad5, #553c9a);
+            border: 2px solid #9f7aea;
+        }
+
+        .engaging-voice {
+            background: linear-gradient(135deg, #e53e3e, #c53030);
+            border: 2px solid #fc8181;
+        }
+
+        .open-ended {
+            background: linear-gradient(135deg, #38a169, #2f855a);
+            border: 2px solid #68d391;
+        }
+
+        .non-personal {
+            background: linear-gradient(135deg, #3182ce, #2c5282);
+            border: 2px solid #63b3ed;
+        }
+
+        .personal {
+            background: linear-gradient(135deg, #dd6b20, #c05621);
+            border: 2px solid #ed8936;
+        }
+
+        .connection-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .usage-meter {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .meter-container {
+            width: 80%;
+            height: 20px;
+            background: #2a2a2a;
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #22c55e, #f59e0b, #ef4444);
+            border-radius: 10px;
+            width: 0%;
+            animation: fillMeter 3s ease-in-out infinite;
+        }
+
+        @keyframes fillMeter {
+            0%, 100% { width: 20%; }
+            50% { width: 85%; }
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 50px 0;
+        }
+
+        .outcome-card {
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .outcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .positive { border-left: 5px solid #22c55e; }
+        .negative { border-left: 5px solid #ef4444; }
+        .complex { border-left: 5px solid #f59e0b; }
+
+        .findings-section {
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .key-finding {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .key-finding:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        .finding-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .interactive-demo {
+            text-align: center;
+            margin: 50px 0;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .demo-button {
+            padding: 15px 30px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            background: linear-gradient(45deg, #00d4ff, #ff00ff);
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .demo-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        .floating-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(0, 212, 255, 0.6);
+            border-radius: 50%;
+            animation: float 6s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 0.5; }
+        }
+
+        @media (max-width: 768px) {
+            .interaction-modes, .conversation-types {
+                position: static;
+                transform: none;
+                margin: 20px 0;
+            }
+            
+            .central-hub {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .title {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-particles" id="particles"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1 class="title">AI CHATBOT INTERACTIONS & PSYCHOSOCIAL EFFECTS</h1>
+            <p class="subtitle">Longitudinal Randomized Controlled Study</p>
+            <p class="authors">MIT Media Lab & OpenAI • March 2025 • n=981, >300K messages</p>
+        </div>
+
+        <div class="central-hub">
+            <div class="interaction-modes">
+                <div class="mode-item text-mode" data-mode="text">
+                    <strong>TEXT MODE</strong>
+                    <div>Traditional text-based interaction</div>
+                </div>
+                <div class="mode-item neutral-voice" data-mode="neutral">
+                    <strong>NEUTRAL VOICE</strong>
+                    <div>Basic voice interaction</div>
+                </div>
+                <div class="mode-item engaging-voice" data-mode="engaging">
+                    <strong>ENGAGING VOICE</strong>
+                    <div>Expressive voice interaction</div>
+                </div>
+            </div>
+
+            <div class="ai-core" id="aiCore">
+                <span>AI</span>
+            </div>
+
+            <div class="conversation-types">
+                <div class="type-item open-ended" data-type="open">
+                    <strong>OPEN-ENDED</strong>
+                    <div>Flexible conversation topics</div>
+                </div>
+                <div class="type-item non-personal" data-type="non-personal">
+                    <strong>NON-PERSONAL</strong>
+                    <div>Factual, objective topics</div>
+                </div>
+                <div class="type-item personal" data-type="personal">
+                    <strong>PERSONAL</strong>
+                    <div>Emotional, intimate topics</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="usage-meter">
+            <h3>Usage Frequency Impact</h3>
+            <div class="meter-container">
+                <div class="meter-fill"></div>
+            </div>
+            <p>Higher usage → Increased loneliness, dependence, and problematic use</p>
+        </div>
+
+        <div class="outcomes-grid">
+            <div class="outcome-card positive">
+                <h3>Initial Benefits</h3>
+                <p>• Voice chatbots initially reduce loneliness</p>
+                <p>• Personal topics decrease emotional dependence</p>
+                <p>• Early interactions show promise</p>
+            </div>
+            <div class="outcome-card negative">
+                <h3>Usage Concerns</h3>
+                <p>• Benefits diminish with heavy use</p>
+                <p>• Neutral voice shows particular risks</p>
+                <p>• Reduced real-world socialization</p>
+            </div>
+            <div class="outcome-card complex">
+                <h3>Complex Dynamics</h3>
+                <p>• Personal topics increase loneliness slightly</p>
+                <p>• Non-personal topics increase dependence</p>
+                <p>• Individual differences matter</p>
+            </div>
+        </div>
+
+        <div class="findings-section">
+            <h2>Key Findings</h2>
+            <div class="key-finding">
+                <div class="finding-icon" style="background: linear-gradient(45deg, #22c55e, #16a34a);">✓</div>
+                <div>
+                    <strong>Voice interactions initially beneficial</strong> - but advantages fade with heavy use
+                </div>
+            </div>
+            <div class="key-finding">
+                <div class="finding-icon" style="background: linear-gradient(45deg, #ef4444, #dc2626);">⚠</div>
+                <div>
+                    <strong>Higher usage correlates with problems</strong> across all interaction types
+                </div>
+            </div>
+            <div class="key-finding">
+                <div class="finding-icon" style="background: linear-gradient(45deg, #f59e0b, #d97706);">⚖</div>
+                <div>
+                    <strong>Complex interplay</strong> between chatbot design and user behavior patterns
+                </div>
+            </div>
+            <div class="key-finding">
+                <div class="finding-icon" style="background: linear-gradient(45deg, #8b5cf6, #7c3aed);">🧠</div>
+                <div>
+                    <strong>Individual differences</strong> in attachment and trust affect outcomes
+                </div>
+            </div>
+        </div>
+
+        <div class="interactive-demo">
+            <h3>Explore the Study Impact</h3>
+            <p>Click to see how different factors influence psychosocial outcomes</p>
+            <button class="demo-button" onclick="showDemo('loneliness')">Loneliness Effects</button>
+            <button class="demo-button" onclick="showDemo('dependence')">Emotional Dependence</button>
+            <button class="demo-button" onclick="showDemo('socialization')">Social Interaction</button>
+            <div id="demoResult" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px; display: none;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        function createParticles() {
+            const particleContainer = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particleContainer.appendChild(particle);
+            }
+        }
+
+        // Interactive mode/type selection
+        document.querySelectorAll('.mode-item, .type-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const mode = this.dataset.mode || this.dataset.type;
+                const aiCore = document.getElementById('aiCore');
+                
+                // Visual feedback
+                aiCore.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    aiCore.style.transform = 'scale(1)';
+                }, 300);
+                
+                // Show contextual information
+                showContextualInfo(mode);
+            });
+        });
+
+        function showContextualInfo(selection) {
+            const info = {
+                text: "Text mode shows baseline interaction effects with moderate outcomes.",
+                neutral: "Neutral voice initially helpful but shows concerning patterns with heavy use.",
+                engaging: "Engaging voice most effective initially but requires careful usage monitoring.",
+                open: "Open-ended conversations show balanced outcomes across measures.",
+                'non-personal': "Non-personal topics associated with higher dependence in heavy users.",
+                personal: "Personal topics reduce dependence but may slightly increase loneliness."
+            };
+            
+            alert(info[selection] || "Interaction selected");
+        }
+
+        function showDemo(type) {
+            const demoResult = document.getElementById('demoResult');
+            const results = {
+                loneliness: {
+                    title: "Loneliness Impact",
+                    content: "Study found that voice chatbots initially reduce loneliness compared to text, but this benefit diminishes with heavy usage. Personal conversations may slightly increase loneliness despite reducing dependence."
+                },
+                dependence: {
+                    title: "Emotional Dependence",
+                    content: "Emotional dependence on AI increases with usage frequency. Personal topics tend to reduce dependence compared to open-ended conversations, while non-personal topics show higher dependence in heavy users."
+                },
+                socialization: {
+                    title: "Real-World Social Interaction",
+                    content: "Higher chatbot usage correlates with decreased real-world socialization across all interaction modes and conversation types, suggesting potential substitution effects."
+                }
+            };
+            
+            const result = results[type];
+            demoResult.innerHTML = `<h4>${result.title}</h4><p>${result.content}</p>`;
+            demoResult.style.display = 'block';
+            demoResult.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // AI Core interaction
+        document.getElementById('aiCore').addEventListener('click', function() {
+            this.style.background = 'radial-gradient(circle, #ff00ff 0%, #8b5cf6 50%, #3730a3 100%)';
+            setTimeout(() => {
+                this.style.background = 'radial-gradient(circle, #00d4ff 0%, #0066cc 50%, #003366 100%)';
+            }, 1000);
+        });
+
+        // Initialize
+        createParticles();
+        
+        // Add hover effects for outcome cards
+        document.querySelectorAll('.outcome-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
