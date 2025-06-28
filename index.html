@@ -58,6 +58,12 @@
     #themeToggle{position:absolute;top:1rem;right:1rem;background:transparent;color:#fff;border:2px solid #fff;border-radius:9999px;padding:.4rem .75rem;font-size:1rem;cursor:pointer;transition:background .3s,color .3s,transform .3s;}
     #themeToggle:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);}  
 
+    /* ------ NAVIGATION BAR ------ */
+    nav{display:flex;justify-content:center;gap:1rem;margin-top:1.4rem;flex-wrap:wrap;}
+    nav a{padding:.5rem 1.2rem;color:#fff;text-decoration:none;font-weight:600;border:2px solid #fff;border-radius:30px;transition:all .3s cubic-bezier(.4,0,.2,1);}  
+    nav a:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:#000;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.2);}  
+    nav a.active{background:var(--accent-bright);color:#000;border-color:var(--accent-bright);}  
+
     /* ------ PROGRESS BAR ------ */
     #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--accent-bright),var(--accent-dark));z-index:9999;transition:width .2s;}
 
@@ -98,6 +104,15 @@
     <h1>Ijeoma Iwuora</h1>
     <p id="subtitle"></p>
   </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <a href="#about">About Me</a>
+    <a href="#course">About the Course</a>
+    <a href="#submissions">Weekly Submissions</a>
+    <a href="#consultation">Consultation</a>
+    <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
+  </nav>
 
   <!-- SUBMISSIONS -->
 <section id="submissions" class="hidden">
