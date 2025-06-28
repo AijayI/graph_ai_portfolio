@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -38,7 +39,8 @@
       transition:background .3s,color .3s;
     }
     body::after{
-      content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:22%;height:100%;
+      content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);
+      width:22%;height:100%;
       background:url("https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png") center/contain no-repeat;
       opacity:.06;pointer-events:none;
     }
@@ -58,7 +60,7 @@
     #themeToggle{position:absolute;top:1rem;right:1rem;background:transparent;color:#fff;border:2px solid #fff;border-radius:9999px;padding:.4rem .75rem;font-size:1rem;cursor:pointer;transition:background .3s,color .3s,transform .3s;}
     #themeToggle:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);}  
 
-    /* ------ NAVIGATION BAR ------ */
+    /* Navigation */
     nav{display:flex;justify-content:center;gap:1rem;margin-top:1.4rem;flex-wrap:wrap;}
     nav a{padding:.5rem 1.2rem;color:#fff;text-decoration:none;font-weight:600;border:2px solid #fff;border-radius:30px;transition:all .3s cubic-bezier(.4,0,.2,1);}  
     nav a:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:#000;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.2);}  
@@ -94,6 +96,8 @@
   </style>
 </head>
 
+
+
 <body>
   <div id="progress"></div>
 
@@ -103,18 +107,44 @@
     <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
     <h1>Ijeoma Iwuora</h1>
     <p id="subtitle"></p>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#course">About the Course</a>
+      <a href="#submissions">Weekly Submissions</a>
+      <a href="#consultation">Consultation</a>
+      <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
+    </nav>
   </header>
 
-  <!-- NAVIGATION BAR -->
-  <nav>
-    <a href="#about">About Me</a>
-    <a href="#course">About the Course</a>
-    <a href="#submissions">Weekly Submissions</a>
-    <a href="#consultation">Consultation</a>
-    <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
-  </nav>
+  <!-- ABOUT -->
+  <section id="about" class="hidden">
+    <h2>About Me</h2>
+    <p>I’m <strong>Ijeoma</strong>, a Data Analyst at VCH with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester, UK, and certifications in Advanced Epidemiological Data Science and Biostatistics, I bridge the worlds of public health, analytics, and organizational change. My current passion lies in harnessing Generative AI to help healthcare service delivery points plan better, optimize resources, and empower teams to make faster, data-driven decisions that improve overall healthcare delivery and patient outcomes.</p>
+    <ul>
+      <li><strong>Core Skills:</strong> SQL • Python • R • STATA • Data Visualization • Forecasting • Generative AI</li>
+      <li><strong>What I'm doing now:</strong> Automating data pipelines, building AI‑powered dashboards, and exploring LLM agents for rapid literature reviews and data analysis and analyzing unstructured text data.</li>
+      <li><strong>Outside work:</strong> Soccer mom to four energetic kids and an avid lover of coastal walks.</li>
+    </ul>
+  </section>
 
-  <!-- SUBMISSIONS -->
+  <!-- COURSE -->
+  <section id="course" class="hidden">
+    <h2>About the Course</h2>
+   <p><em>Generative AI for Work &amp; Research</em> is an intensive 8-week live cohort program designed to help professionals, researchers, and students build practical AI solutions that supercharge productivity. Delivered by GRAPH Courses, a nonprofit initiative based at the University of Geneva, the course blends academic rigor with hands-on learning. Participants are guided through weekly live workshops, help sessions, and forums to build confidence applying AI in their daily workflows. This course is ideal for researchers, analysts, educators, and professionals seeking to integrate AI into their daily work — without needing to code. For more information, visit <a href="https://thegraphcourses.org/">the official course page</a>.</p>
+    
+    <ul>
+       <p>Over the next two months, I will:</p>
+    <ul>
+      <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
+      <li>Use AI tools for knowledge organization and literature reviews</li>
+      <li>Develop custom chatbots to support projects and teams</li>
+      <li>Create professional visuals and presentations with AI</li>
+      <li>Apply these skills in a hands‑on capstone project</li>
+      <li>Receive real‑time support in live workshops, help sessions & online forums</li>
+    </ul>
+  </section>
+
+ <!-- SUBMISSIONS -->
 <section id="submissions" class="hidden">
   <h2>Weekly Submissions</h2>
   <p>Click a card to view the work:</p>
@@ -146,11 +176,9 @@
 </a>
 
     </div>
-    <!-- Week 7 Link as a card -->
-    <div class="card">
+    <div class="card" aria-disabled="true">
       <h3>Week 7</h3>
       <p>Capstone Project (coming soon)</p>
-      <a href="http://127.0.0.1:4591/" target="_blank" rel="noopener">View Generative AI Portfolio</a>
     </div>
     <div class="card" aria-disabled="true">
       <h3>Week 8</h3>
@@ -159,10 +187,22 @@
   </div>
 </section>
 
+  <!-- CONSULTATION FORM -->
+  <section id="consultation" class="hidden">
+    <h2>Book a Consultation</h2>
+    <p>If you’d like to chat about Gen AI automation, data projects or potential collaborations, feel free to contact me using the form below:</p>
+    <div class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSctsb1i6YjJFG76HhX3oi3ZfxPcAe6xwCrUTZpnxNT5wloQkA/viewform?embedded=true" allowfullscreen loading="lazy">Loading…</iframe>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer>
+<footer>
   © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
   <div id="localTime" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);"></div>
+</footer>
+
   </footer>
 
   <!-- SCRIPTS -->
@@ -171,13 +211,14 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Local time updater
-    function updateTime() {
-      const now = new Date();
-      const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      document.getElementById('localTime').textContent = `🕒 Local Time: ${timeStr}`;
-    }
-    setInterval(updateTime, 1000);
-    updateTime();
+function updateTime() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('localTime').textContent = `🕒 Local Time: ${timeStr}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
 
     // Theme toggle
     const toggleBtn = document.getElementById('themeToggle');
@@ -189,26 +230,27 @@
     });
 
     // Typewriter subtitle
-    const subtitles = [
-      "Hi, I’m Ijeoma — passionate about turning data into decisions.",
-      "I build with Generative AI to improve productivity.",
-      "AI | Data | Public Health — bridging it all together."
-    ];
-    let i = 0, j = 0;
-    function typeDynamic() {
-      const text = subtitles[j];
-      document.getElementById('subtitle').textContent = text.slice(0, ++i);
-      if (i < text.length) {
-        setTimeout(typeDynamic, 60);
-      } else {
-        setTimeout(() => {
-          i = 0;
-          j = (j + 1) % subtitles.length;
-          typeDynamic();
-        }, 2500);
-      }
-    }
-    typeDynamic();
+ const subtitles = [
+  "Hi, I’m Ijeoma — passionate about turning data into decisions.",
+  "I build with Generative AI to improve productivity.",
+  "AI | Data | Public Health — bridging it all together."
+];
+let i = 0, j = 0;
+function typeDynamic() {
+  const text = subtitles[j];
+  document.getElementById('subtitle').textContent = text.slice(0, ++i);
+  if (i < text.length) {
+    setTimeout(typeDynamic, 60);
+  } else {
+    setTimeout(() => {
+      i = 0;
+      j = (j + 1) % subtitles.length;
+      typeDynamic();
+    }, 2500);
+  }
+}
+typeDynamic();
+
 
     // Progress bar
     const progress = document.getElementById('progress');
@@ -244,3 +286,9 @@
 <script src="https://files.bpcontent.cloud/2025/06/14/17/20250614173538-IPWVBGBD.js"></script>
 </body>
 </html>
+<a href="#consultation" style="
+  position: fixed; bottom: 60px; left: 20px; 
+  background: var(--accent-bright); color: #000; 
+  padding: 0.6rem 1rem; border-radius: 30px; font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none;
+  z-index: 9999;">💬 Give Feedback</a>
