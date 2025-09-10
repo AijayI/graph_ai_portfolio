@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ijeoma Iwuora – AI Portfolio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- Basic Reset & Fonts --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Roboto', sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* --- Header --- */
+    header { background: #1e1e2f; color: #fff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; }
+    header h1 { font-size: 1.8rem; }
+    nav ul { display: flex; gap: 1.5rem; }
+    nav a:hover { color: #ff9800; }
+
+    /* --- Sections --- */
+    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
+    section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1e1e2f; }
+    section p { margin-bottom: 1rem; }
+
+    /* --- About Me --- */
+    #about-me { background: #fff; border-radius: 10px; padding: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    #about-me img { width: 150px; border-radius: 50%; margin-bottom: 1rem; }
+
+    /* --- Projects --- */
+    #projects { background: #f1f1f1; }
+    .project { margin-bottom: 2rem; padding: 1.5rem; background: #fff; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
+    .project h3 { color: #ff9800; margin-bottom: 0.5rem; }
+    .project p { margin-bottom: 0.5rem; }
+
+    /* --- Contact --- */
+    #contact { background: #fff; border-radius: 10px; padding: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    #contact form { display: flex; flex-direction: column; gap: 1rem; }
+    #contact input, #contact textarea { padding: 0.8rem; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
+    #contact button { padding: 0.8rem; border: none; background: #ff9800; color: #fff; font-size: 1rem; border-radius: 5px; cursor: pointer; }
+    #contact button:hover { background: #e07b00; }
+
+    /* --- Footer --- */
+    footer { text-align: center; padding: 2rem; background: #1e1e2f; color: #fff; margin-top: 2rem; }
+    footer a { color: #ff9800; }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER & NAV -->
+  <header>
+    <h1>Ijeoma Iwuora</h1>
+    <nav>
+      <ul>
+        <li><a href="#about-me">About Me</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ABOUT ME -->
+  <section id="about-me">
+    <img src="profile.jpg" alt="Ijeoma Iwuora">
+    <h2>About Me</h2>
+    <p>Hello! I’m Ijeoma, a health data analyst passionate about AI-powered analytics, automation, and creating actionable insights for decision-making. I build dashboards, interactive AI demos, and workflows that help organizations leverage data effectively.</p>
+    <p>I recently enhanced my AI expertise through intensive generative AI projects, focusing on dashboards, automation, and interactive data solutions for professional and personal projects.</p>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="project">
+      <h3>Generative AI Portfolio Website</h3>
+      <p>Interactive AI demos, portfolio showcase, project documentation.</p>
+      <p><a href="https://aijayi.github.io/graph_ai_portfolio/" target="_blank">View Project →</a></p>
+    </div>
+
+    <div class="project">
+      <h3>Hospital Utilization Dashboard</h3>
+      <p>Forecasting and interactive visualization of hospital bed needs and patient flow metrics using Python and Plotly.</p>
+    </div>
+
+    <div class="project">
+      <h3>Gapminder Data Dashboards</h3>
+      <p>Analysis of Internet Usage vs. Health Expenditure with interactive Quarto dashboards.</p>
+    </div>
+
+    <!-- Add more projects as needed -->
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Want to collaborate or learn more? Reach out!</p>
+    <form action="mailto:ijiwuora@gmail.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Ijeoma Iwuora | <a href="https://www.linkedin.com/in/ijeoma-i-4484b1127/" target="_blank">LinkedIn</a></p>
+  </footer>
+
+</body>
+</html>
