@@ -1,113 +1,295 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ijeoma Iwuora – AI Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>Ijeoma | Generative AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    /* --- Basic Reset & Fonts --- */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Roboto', sans-serif; line-height: 1.6; background-color: #f9f9f9; color: #333; }
-    a { text-decoration: none; color: inherit; }
-    ul { list-style: none; }
-    img { max-width: 100%; display: block; }
+    /* ----------------------------
+       MODERN PROFESSIONAL THEME   
+       ----------------------------*/
+    :root {
+      --accent: #253858;       /* Deep indigo */
+      --accent-dark: #3F51B5;  /* Soft indigo for headings */
+      --accent-bright: #00B8D4;/* Cyan micro‑accent */
+      --bg: #F4F6FA;           /* Light grey‑blue */
+      --text: #222;            /* Copy */
+      --muted: #666;           /* Muted */
+      --name-color: #fff;      /* Name */
+    }
+    [data-theme='dark'] {
+      --bg: #121417;
+      --text: #E0E2E4;
+      --muted: #888;
+      --accent: #3F51B5;
+      --accent-dark: #8F9BFF;
+      --accent-bright: #00E0FF;
+    }
 
-    /* --- Header --- */
-    header { background: #1e1e2f; color: #fff; padding: 1rem 2rem; position: sticky; top: 0; z-index: 1000; }
-    header h1 { font-size: 1.8rem; }
-    nav ul { display: flex; gap: 1.5rem; }
-    nav a:hover { color: #ff9800; }
+    /* ------ BASE ------ */
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{
+      font-family: Inter, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height:1.6;
+      position:relative;
+      scroll-behavior:smooth;
+      transition:background .3s,color .3s;
+    }
+    body::after{
+      content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:22%;height:100%;
+      background:url("https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/graph_watermark.png") center/contain no-repeat;
+      opacity:.06;pointer-events:none;
+    }
+    h1,h2,h3{font-family:Georgia,"Times New Roman",serif;color:var(--accent-dark);margin-bottom:.5em;}
 
-    /* --- Sections --- */
-    section { padding: 4rem 2rem; max-width: 1100px; margin: 0 auto; }
-    section h2 { font-size: 2rem; margin-bottom: 1rem; color: #1e1e2f; }
-    section p { margin-bottom: 1rem; }
+    /* ------ HEADER ------ */
+    header{
+      background:linear-gradient(rgba(37,56,88,.9),rgba(37,56,88,.9)),
+                 url("https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg") center/cover no-repeat;
+      color:#fff;text-align:center;padding:3.5rem 1rem 2.5rem;position:relative;
+    }
+    header h1{color:var(--name-color);margin-top:.6rem;font-size:2.4rem;}
+    header p{opacity:.9;}
+    .avatar{width:160px;height:160px;object-fit:cover;border:4px solid #fff;border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.18);margin:0 auto 1rem;}
 
-    /* --- About Me --- */
-    #about-me { background: #fff; border-radius: 10px; padding: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
-    #about-me img { width: 150px; border-radius: 50%; margin-bottom: 1rem; }
+    /* Theme toggle */
+    #themeToggle{position:absolute;top:1rem;right:1rem;background:transparent;color:#fff;border:2px solid #fff;border-radius:9999px;padding:.4rem .75rem;font-size:1rem;cursor:pointer;transition:background .3s,color .3s,transform .3s;}
+    #themeToggle:hover{background:#fff;color:var(--accent-dark);transform:translateY(-2px);}  
 
-    /* --- Projects --- */
-    #projects { background: #f1f1f1; }
-    .project { margin-bottom: 2rem; padding: 1.5rem; background: #fff; border-radius: 10px; box-shadow: 0 0 8px rgba(0,0,0,0.05); }
-    .project h3 { color: #ff9800; margin-bottom: 0.5rem; }
-    .project p { margin-bottom: 0.5rem; }
+    /* Navigation */
+    nav{display:flex;justify-content:center;gap:1rem;margin-top:1.4rem;flex-wrap:wrap;}
+    nav a{padding:.5rem 1.2rem;color:#fff;text-decoration:none;font-weight:600;border:2px solid #fff;border-radius:30px;transition:all .3s cubic-bezier(.4,0,.2,1);}  
+    nav a:hover{background:var(--accent-bright);border-color:var(--accent-bright);color:#000;transform:translateY(-2px);box-shadow:0 4px 8px rgba(0,0,0,.2);}  
+    nav a.active{background:var(--accent-bright);color:#000;border-color:var(--accent-bright);}  
 
-    /* --- Contact --- */
-    #contact { background: #fff; border-radius: 10px; padding: 2rem; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
-    #contact form { display: flex; flex-direction: column; gap: 1rem; }
-    #contact input, #contact textarea { padding: 0.8rem; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem; }
-    #contact button { padding: 0.8rem; border: none; background: #ff9800; color: #fff; font-size: 1rem; border-radius: 5px; cursor: pointer; }
-    #contact button:hover { background: #e07b00; }
+    /* ------ PROGRESS BAR ------ */
+    #progress{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--accent-bright),var(--accent-dark));z-index:9999;transition:width .2s;}
 
-    /* --- Footer --- */
-    footer { text-align: center; padding: 2rem; background: #1e1e2f; color: #fff; margin-top: 2rem; }
-    footer a { color: #ff9800; }
+    /* ------ SECTIONS ------ */
+    section{padding:3rem 1rem;max-width:900px;margin:0 auto;}
+    .hidden{opacity:0;transform:translateY(20px);} .visible{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s ease-out;}
+
+    /* Card grid */
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
+    .card{background:#fff;border:2px solid var(--accent-dark);border-radius:1rem;padding:1.2rem;transition:transform .25s,box-shadow .25s,border-color .25s;}
+    [data-theme='dark'] .card{background:#1C1E22;}
+    .card:hover{transform:translateY(-4px);box-shadow:0 8px 16px rgba(0,0,0,.18);border-color:var(--accent-bright);}  
+    .card h3{margin-bottom:.5rem;color:var(--accent-dark);}  
+
+    /* Iframe container (Consultation Form) */
+    .iframe-container{position:relative;padding-bottom:130%;height:0;overflow:hidden;border-radius:1rem;border:2px solid var(--accent-dark);} 
+    .iframe-container iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+
+    /* Body links */
+    section a:not(.card){color:var(--accent-dark);text-decoration:underline 2px var(--accent-bright);text-underline-offset:3px;transition:color .2s;}
+    section a:not(.card):hover{color:var(--accent-bright);}  
+
+    /* Footer */
+    footer{background:#E9EBF0;text-align:center;padding:1rem;font-size:.9rem;color:var(--muted);} [data-theme='dark'] footer{background:#1B1D22;}
+
+    /* ------ RESPONSIVE ------ */
+    @media(max-width:768px){header{padding:2.5rem 1rem 1.5rem;}.avatar{width:120px;height:120px;}nav{flex-direction:column;gap:1rem;}}
   </style>
 </head>
-<body>
 
-  <!-- HEADER & NAV -->
+<body>
+  <div id="progress"></div>
+
+  <!-- HEADER -->
   <header>
+    <button id="themeToggle" aria-label="Toggle dark mode">🌙</button>
+    <img src="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/kenya_2.jpg" alt="Ijeoma smiling" class="avatar">
     <h1>Ijeoma Iwuora</h1>
+    <p id="subtitle"></p>
     <nav>
-      <ul>
-        <li><a href="#about-me">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a href="#about">About Me</a>
+      <a href="#course">About the Course</a>
+      <a href="#submissions">Weekly Submissions</a>
+      <a href="#consultation">Consultation</a>
+      <a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Simple_resume_CV__using_XeLaTeX_%20(1).pdf" target="_blank" rel="noopener" download>Download Résumé</a>
     </nav>
   </header>
 
-  <!-- ABOUT ME -->
-  <section id="about-me">
-    <img src="profile.jpg" alt="Ijeoma Iwuora">
+  <!-- ABOUT -->
+  <section id="about" class="hidden">
     <h2>About Me</h2>
-    <p>Hello! I’m Ijeoma, a health data analyst passionate about AI-powered analytics, automation, and creating actionable insights for decision-making. I build dashboards, interactive AI demos, and workflows that help organizations leverage data effectively.</p>
-    <p>I recently enhanced my AI expertise through intensive generative AI projects, focusing on dashboards, automation, and interactive data solutions for professional and personal projects.</p>
+    <p>I’m <strong>Ijeoma</strong>, a Data Analyst at VCH with a decade of experience transforming complex healthcare data into actionable insights. Armed with an MPH from the University of Manchester, UK, and certifications in Advanced Epidemiological Data Science and Biostatistics, I bridge the worlds of public health, analytics, and organizational change. My current passion lies in harnessing Generative AI to help healthcare service delivery points plan better, optimize resources, and empower teams to make faster, data-driven decisions that improve overall healthcare delivery and patient outcomes.</p>
+    <ul>
+      <li><strong>Core Skills:</strong> SQL • Python • R • STATA • Data Visualization • Forecasting • Generative AI</li>
+      <li><strong>What I'm doing now:</strong> Automating data pipelines, building AI‑powered dashboards, and exploring LLM agents for rapid literature reviews and data analysis and analyzing unstructured text data.</li>
+      <li><strong>Outside work:</strong> Soccer mom to four energetic kids and an avid lover of coastal walks.</li>
+    </ul>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <h2>Projects</h2>
-
-    <div class="project">
-      <h3>Generative AI Portfolio Website</h3>
-      <p>Interactive AI demos, portfolio showcase, project documentation.</p>
-      <p><a href="https://aijayi.github.io/graph_ai_portfolio/" target="_blank">View Project →</a></p>
-    </div>
-
-    <div class="project">
-      <h3>Hospital Utilization Dashboard</h3>
-      <p>Forecasting and interactive visualization of hospital bed needs and patient flow metrics using Python and Plotly.</p>
-    </div>
-
-    <div class="project">
-      <h3>Gapminder Data Dashboards</h3>
-      <p>Analysis of Internet Usage vs. Health Expenditure with interactive Quarto dashboards.</p>
-    </div>
-
-    <!-- Add more projects as needed -->
+  <!-- COURSE -->
+  <section id="course" class="hidden">
+    <h2>About the Course</h2>
+   <p><em>Generative AI for Work &amp; Research</em> is an intensive 8-week live cohort program designed to help professionals, researchers, and students build practical AI solutions that supercharge productivity. Delivered by GRAPH Courses, a nonprofit initiative based at the University of Geneva, the course blends academic rigor with hands-on learning. Participants are guided through weekly live workshops, help sessions, and forums to build confidence applying AI in their daily workflows. This course is ideal for researchers, analysts, educators, and professionals seeking to integrate AI into their daily work — without needing to code. For more information, visit <a href="https://thegraphcourses.org/">the official course page</a>.</p>
+    
+    <ul>
+       <p>Over the next two months, I will:</p>
+    <ul>
+      <li>Automate time‑consuming document, spreadsheet, and data tasks</li>
+      <li>Use AI tools for knowledge organization and literature reviews</li>
+      <li>Develop custom chatbots to support projects and teams</li>
+      <li>Create professional visuals and presentations with AI</li>
+      <li>Apply these skills in a hands‑on capstone project</li>
+      <li>Receive real‑time support in live workshops, help sessions & online forums</li>
+    </ul>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Want to collaborate or learn more? Reach out!</p>
-    <form action="mailto:ijiwuora@gmail.com" method="post" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
+ <!-- SUBMISSIONS -->
+<section id="submissions" class="hidden">
+  <h2>Weekly Submissions</h2>
+  <p>Click a card to view the work:</p>
+  <div class="card-grid">
+    <a class="card" href="https://aijayi.github.io/graph_ai_portfolio/" target="_blank" rel="noopener">
+      <h3>Week 1</h3>
+      <p>Websites, Documents and Presentations: GenAI Portfolio Website</p>
+    </a>
+    <a class="card" href="https://aijayi.github.io/graph_ai_portfolio/analysis_report.html" target="_blank" rel="noopener">
+      <h3>Week 2</h3>
+      <p>AI Automated Data Analysis: 2010 Health Spending vs Life Expectancy</p>
+    </a>
+    <a class="card" href="https://aijayi.github.io/graph_ai_portfolio/job_market_report.html" target="_blank" rel="noopener">
+      <h3>Week 3</h3>
+      <p>Generative AI for research and text analysis: Glassdoor Job Market Analysis </p>
+    </a>
+    <div class="card" aria-disabled="true">
+      <h3>Week 4</h3>
+      <p>Custom LLM Chatbot - see Aithena (my chat bot) to the bottom right of this page </p>
+    </div>
+    <div class="card" aria-disabled="true">
+      <h3>Week 5</h3>
+      <p>AI-driven workflows and email automations: (Consultation Inquiry Form Below)</p>
+    </div>
+    <div class="card">
+      <h3>Week 6</h3>
+      <p> GenAI for Designs: Designing Course Profolio Showcase Flyer:
+<a href="https://raw.githubusercontent.com/AijayI/graph_ai_portfolio/main/Graph%20Courses-%20Generative%20Al%20Portfolio%20Showcase%20Final%20Class%20Presentation.pdf" download target="_blank"  rel="noopener"> 📄 Download Event Flyer </p>
+</a>
+
+    </div>
+    <!-- Week 7 Link as a card -->
+    <div class="card">
+      <h3>Week 7</h3>
+      <p>Capstone Project </p>
+      <a href="https://1oh7te-ijeoma-iwuora.shinyapps.io/capstone/" target="_blank" rel="noopener">View Interactive Dashboard </a>
+    </div>
+   <!-- Week 8 Link as a card -->
+<div class="card">
+  <h3>Week 8</h3>
+  <p>Capstone Showcase</p>
+  <a href="https://covid-19-dashboard-ai-en-s1l8sc9.gamma.site/covid-19-dashboard-ai-enhanced-data-visualisation/" target="_blank" rel="noopener">View Showcase Event Presentation </a>
+</div>
+
+  </div>
+</section>
+
+  <!-- CONSULTATION FORM -->
+  <section id="consultation" class="hidden">
+    <h2>Book a Consultation</h2>
+    <p>If you’d like to chat about Gen AI automation, data projects or potential collaborations, feel free to contact me using the form below:</p>
+    <div class="iframe-container">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSctsb1i6YjJFG76HhX3oi3ZfxPcAe6xwCrUTZpnxNT5wloQkA/viewform?embedded=true" allowfullscreen loading="lazy">Loading…</iframe>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 Ijeoma Iwuora | <a href="https://www.linkedin.com/in/ijeoma-i-4484b1127/" target="_blank">LinkedIn</a></p>
+<footer>
+  © <span id="year"></span> Ijeoma Iwuora. All rights reserved.
+  <div id="localTime" style="margin-top: 0.5rem; font-size: 0.85rem; color: var(--muted);"></div>
+</footer>
+
   </footer>
 
+  <!-- SCRIPTS -->
+  <script>
+    // Dynamic year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Local time updater
+function updateTime() {
+  const now = new Date();
+  const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  document.getElementById('localTime').textContent = `🕒 Local Time: ${timeStr}`;
+}
+setInterval(updateTime, 1000);
+updateTime();
+
+
+    // Theme toggle
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const newTheme = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+      toggleBtn.textContent = newTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Typewriter subtitle
+ const subtitles = [
+  "Hi, I’m Ijeoma — passionate about turning data into decisions.",
+  "I build with Generative AI to improve productivity.",
+  "AI | Data | Public Health — bridging it all together."
+];
+let i = 0, j = 0;
+function typeDynamic() {
+  const text = subtitles[j];
+  document.getElementById('subtitle').textContent = text.slice(0, ++i);
+  if (i < text.length) {
+    setTimeout(typeDynamic, 60);
+  } else {
+    setTimeout(() => {
+      i = 0;
+      j = (j + 1) % subtitles.length;
+      typeDynamic();
+    }, 2500);
+  }
+}
+typeDynamic();
+
+
+    // Progress bar
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrolled = (window.scrollY / docHeight) * 100;
+      progress.style.width = scrolled + '%';
+    });
+
+    // Fade‑in observer
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.hidden').forEach(el => io.observe(el));
+
+    // Scroll‑spy nav
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    const sections = [...navLinks].map(l => document.querySelector(l.getAttribute('href')));
+    const spy = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const idx = sections.indexOf(e.target);
+        if (idx > -1) navLinks[idx].classList.toggle('active', e.isIntersecting);
+      });
+    }, { threshold: 0.6 });
+    sections.forEach(s => spy.observe(s));
+  </script>
+  <script src="https://cdn.botpress.cloud/webchat/v3.0/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/06/14/17/20250614173538-IPWVBGBD.js"></script>
 </body>
 </html>
+<a href="#consultation" style="
+  position: fixed; bottom: 60px; left: 20px; 
+  background: var(--accent-bright); color: #000; 
+  padding: 0.6rem 1rem; border-radius: 30px; font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2); text-decoration: none;
+  z-index: 9999;">💬 Give Feedback</a>
