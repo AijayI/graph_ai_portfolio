@@ -433,6 +433,121 @@
       font-weight: 800;
     }
 
+    .featured-case-study {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(16rem, 0.8fr);
+      gap: 1.25rem;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1.35rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 6px solid var(--teal);
+      border-radius: 10px;
+      box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+    }
+
+    .featured-case-study small {
+      display: block;
+      color: var(--teal-dark);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .featured-case-study h3 {
+      margin: 0.45rem 0 0;
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+    }
+
+    .featured-case-study p {
+      margin: 0.85rem 0 0;
+      color: var(--ink-soft);
+    }
+
+    .case-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 1rem;
+    }
+
+    .case-metrics span {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.45rem 0.65rem;
+      background: #eef7f6;
+      border: 1px solid #c9e7e3;
+      border-radius: 999px;
+      color: var(--teal-dark);
+      font-size: 0.86rem;
+      font-weight: 800;
+    }
+
+    .featured-actions {
+      display: grid;
+      justify-items: start;
+      gap: 0.75rem;
+    }
+
+    .case-detail {
+      display: grid;
+      gap: 0.45rem;
+      margin-top: 0.85rem;
+    }
+
+    .case-detail p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+
+    .case-detail strong {
+      color: var(--ink);
+    }
+
+    .technical-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0.85rem;
+    }
+
+    .technical-card {
+      min-height: 10rem;
+      padding: 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-top: 4px solid var(--teal);
+      border-radius: 8px;
+      box-shadow: 0 8px 24px rgba(23, 32, 51, 0.06);
+    }
+
+    .technical-card:nth-child(2) {
+      border-top-color: var(--coral);
+    }
+
+    .technical-card:nth-child(3) {
+      border-top-color: var(--gold);
+    }
+
+    .technical-card:nth-child(4) {
+      border-top-color: var(--green);
+    }
+
+    .technical-card h3 {
+      margin: 0 0 0.55rem;
+      color: var(--ink);
+      font-size: 1.05rem;
+    }
+
+    .technical-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+
     .toolkit-strip {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -579,7 +694,9 @@
       .hero-stats,
       .about-layout,
       .toolkit-strip,
-      .consult-layout {
+      .consult-layout,
+      .featured-case-study,
+      .technical-grid {
         grid-template-columns: 1fr;
       }
 
@@ -659,7 +776,7 @@
     <div class="nav-links">
       <a href="#about">About</a>
       <a href="#work">Projects</a>
-      <a href="#ai-toolkit">AI Workflow</a>
+      <a href="#ai-toolkit">AI Workflows</a>
       <a href="#consultation">Let's Connect</a>
       <a class="resume-link" href="DA_CRC_Feb_19.pdf" target="_blank" rel="noopener">Resume</a>
     </div>
@@ -672,7 +789,7 @@
       <p class="hero-copy">I turn complex health, workforce, and program data into dashboards, forecasts, reports, and AI-assisted workflows that help teams make faster, clearer decisions.</p>
       <div class="hero-actions" aria-label="Featured actions">
         <a class="button primary" href="#work">View portfolio</a>
-        <a class="button secondary" href="#consultation">Book a consultation</a>
+        <a class="button secondary" href="#consultation">Contact me</a>
       </div>
     </div>
   </header>
@@ -700,7 +817,7 @@
             <p class="eyebrow">About</p>
             <h2>Analytics that connects data, systems, and decisions.</h2>
           </div>
-          <p class="lead">I am a health data analyst with a background in population health, epidemiology, biostatistics, project management, and organizational change. My work sits where messy operational questions meet data, people, systems, and practical decisions..</p>
+          <p class="lead">I am a health data analyst with a background in population health, epidemiology, biostatistics, project management, and organizational change. My work sits where messy operational questions meet data, people, systems, and practical decisions.</p>
           <ul class="focus-list">
             <li>I build and improve reporting workflows that make data easier to trust, interpret, and reuse.</li>
             <li>I use Codex and generative AI to automate document, spreadsheet, research, and dashboard tasks.</li>
@@ -734,21 +851,45 @@
           <p>Selected work across health analytics, market intelligence, dashboards, research support, and workflow automation.</p>
         </div>
 
+        <article class="featured-case-study">
+          <div>
+            <small>Featured case study</small>
+            <h3>Data Analyst Job Market Intelligence Report</h3>
+            <p>An interactive analysis of 400 job postings exploring salary distribution, experience expectations, skill demand, language requirements, industry patterns, and labour market positioning.</p>
+            <div class="case-metrics" aria-label="Featured case study metrics">
+              <span>400 postings analyzed</span>
+              <span>Salary + skill extraction</span>
+              <span>Interactive Plotly report</span>
+            </div>
+          </div>
+          <div class="featured-actions">
+            <a class="button dark" href="enhanced_job_market_report.html" target="_blank" rel="noopener">View case study</a>
+          </div>
+        </article>
+
         <div class="project-grid">
           <a class="project-card" href="analysis_report.html" target="_blank" rel="noopener">
             <div>
               <small>Population health analytics report</small>
               <h3>Health Spending & Life Expectancy Analysis</h3>
-              <p>AI-assisted exploratory analysis examining relationships between health expenditure, life expectancy, and country-level development indicators.</p>
+              <div class="case-detail">
+                <p><strong>Problem:</strong> How do health spending patterns relate to life expectancy outcomes?</p>
+                <p><strong>Approach:</strong> Used AI-assisted exploration to compare country-level indicators and surface relationships.</p>
+                <p><strong>Output:</strong> Interactive analysis report with decision-friendly interpretation.</p>
+              </div>
             </div>
             <span>Open report</span>
           </a>
 
           <a class="project-card" href="enhanced_job_market_report.html" target="_blank" rel="noopener">
             <div>
-              <small>Labor market intelligence</small>
+              <small>Labour market intelligence</small>
               <h3>Data Analyst Job Market Intelligence Report</h3>
-              <p>Interactive analysis of 400 job postings exploring salary patterns, skill demand, experience requirements, and hiring geography.</p>
+              <div class="case-detail">
+                <p><strong>Problem:</strong> What skills, salary signals, and experience expectations define the analyst market?</p>
+                <p><strong>Approach:</strong> Cleaned 400 postings, extracted skill patterns, and compared salary by experience and language demand.</p>
+                <p><strong>Output:</strong> Interactive labour market intelligence report.</p>
+              </div>
             </div>
             <span>Open analysis</span>
           </a>
@@ -757,7 +898,11 @@
             <div>
               <small>Responsible AI research support</small>
               <h3>AI Chatbot Interactions & Psychosocial Effects</h3>
-              <p>Research translation report summarizing chatbot interaction patterns, user wellbeing signals, and implications for responsible AI design.</p>
+              <div class="case-detail">
+                <p><strong>Problem:</strong> What can chatbot interaction research tell us about wellbeing and responsible AI design?</p>
+                <p><strong>Approach:</strong> Translated study findings into a structured, accessible visual report.</p>
+                <p><strong>Output:</strong> Research summary page for technical and non-technical readers.</p>
+              </div>
             </div>
             <span>View study</span>
           </a>
@@ -766,7 +911,11 @@
             <div>
               <small>Workflow automation</small>
               <h3>Workflow and Email Automation</h3>
-              <p>Consultation inquiry flow connected to AI-assisted service and collaboration workflows.</p>
+              <div class="case-detail">
+                <p><strong>Problem:</strong> How can inquiry and collaboration workflows become easier to capture and route?</p>
+                <p><strong>Approach:</strong> Connected a simple form experience to AI-assisted service framing.</p>
+                <p><strong>Output:</strong> Lightweight intake flow for analytics and automation conversations.</p>
+              </div>
             </div>
             <span>Use form</span>
           </a>
@@ -775,46 +924,55 @@
             <div>
               <small>Agentic analytics</small>
               <h3>Job Search Intelligence Agent</h3>
-              <p>Codex-assisted workflow that scans analyst roles, extracts pay and skill signals, removes duplicates, and exports structured Excel outputs for tracking.</p>
+              <div class="case-detail">
+                <p><strong>Problem:</strong> Manual job tracking makes it hard to compare roles, pay, and required skills.</p>
+                <p><strong>Approach:</strong> Built a Codex-assisted workflow to scan roles, extract signals, dedupe results, and structure outputs.</p>
+                <p><strong>Output:</strong> Excel-ready job intelligence tracker.</p>
+              </div>
             </div>
             <span>See toolkit</span>
-          </a>
-
-          <a class="project-card" href="https://1oh7te-ijeoma-iwuora.shinyapps.io/capstone/" target="_blank" rel="noopener">
-            <div>
-              <small>Interactive dashboard</small>
-              <h3>Interactive Capstone Dashboard</h3>
-              <p>Applied dashboard experience integrating analysis, visualization, and user-facing decision support.</p>
-            </div>
-            <span>Launch dashboard</span>
-          </a>
-
-          <a class="project-card" href="https://covid-19-dashboard-ai-en-s1l8sc9.gamma.site/covid-19-dashboard-ai-enhanced-data-visualisation/" target="_blank" rel="noopener">
-            <div>
-              <small>Data storytelling</small>
-              <h3>Capstone Showcase</h3>
-              <p>Final presentation for the COVID-19 dashboard and enhanced data visualization work.</p>
-            </div>
-            <span>Open presentation</span>
           </a>
 
           <a class="project-card" href="professional_profile.html" target="_blank" rel="noopener">
             <div>
               <small>Profile</small>
               <h3>Professional Snapshot</h3>
-              <p>A concise profile page for analytics experience, project framing, and collaboration context.</p>
+              <div class="case-detail">
+                <p><strong>Problem:</strong> Portfolio visitors need a quick view of professional context.</p>
+                <p><strong>Approach:</strong> Summarized analytics experience, project framing, and collaboration strengths.</p>
+                <p><strong>Output:</strong> Concise professional snapshot page.</p>
+              </div>
             </div>
             <span>View profile</span>
           </a>
+        </div>
+      </div>
+    </section>
 
-          <a class="project-card" href="DA_CRC_Feb_19.pdf" target="_blank" rel="noopener">
-            <div>
-              <small>Resume</small>
-              <h3>Experience and Credentials</h3>
-              <p>Downloadable resume with education, analytics background, and technical skills.</p>
-            </div>
-            <span>Open resume</span>
-          </a>
+    <section class="band white reveal" id="technical-workflow">
+      <div class="section-inner">
+        <div class="section-header">
+          <p class="eyebrow">Technical workflow</p>
+          <h2>How I move from messy data to decision-ready outputs.</h2>
+          <p>My work combines data cleaning, feature extraction, analysis, visualization, and deployment so outputs are useful beyond the first review.</p>
+        </div>
+        <div class="technical-grid" aria-label="Technical workflow steps">
+          <article class="technical-card">
+            <h3>Data cleaning</h3>
+            <p>Standardize fields, handle missing values, remove duplicates, validate formats, and prepare datasets for analysis.</p>
+          </article>
+          <article class="technical-card">
+            <h3>Feature extraction</h3>
+            <p>Extract skills, salary signals, locations, categories, themes, and indicators from structured and semi-structured data.</p>
+          </article>
+          <article class="technical-card">
+            <h3>Analysis & visualization</h3>
+            <p>Use Python, Pandas, SQL, Plotly, and BI tools to identify patterns and communicate insight clearly.</p>
+          </article>
+          <article class="technical-card">
+            <h3>Reporting & deployment</h3>
+            <p>Publish reports, dashboards, Excel outputs, and GitHub Pages assets for stakeholder use and portfolio review.</p>
+          </article>
         </div>
       </div>
     </section>
